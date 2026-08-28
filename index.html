@@ -21,40 +21,12 @@
 </head>
 
 <body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="bi bi-stars"></i> DiksStore</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#streaming">Streaming</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#music">Music</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#editing">Editing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#education">Education</a>
-            </li>
-            </ul>
-        </div>
+            <a class="navbar-brand" href="#"><img src="assets/logo-diksstore.png" alt="DiksStore Logo" class="brand-logo" /> DiksStore</a>
         </div>
     </nav>
 
@@ -65,247 +37,134 @@
             <input type="text" class="search-input" id="searchInput" placeholder="Cari layanan premium...">
         </div>
 
-        <!-- Streaming Section -->
-        <section id="streaming" class="category-section fade-in-section">
-            <h2 class="section-title">Streaming</h2>
+        <!-- Price List Section -->
+        <section id="price-list" class="category-section fade-in-section">
+            <h2 class="section-title">Daftar Harga</h2>
+            <p class="section-subtitle">Harga terjangkau &bull; Full garansi &bull; Proses cepat via WA</p>
             <div class="row g-4">
                 <!-- Netflix -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-danger">
-                            <i class="bi bi-film"></i>
+                    <div class="service-card product-netflix text-center">
+                        <div class="service-icon">
+                            <img src="assets/Netflix.png" alt="Netflix Logo" class="product-logo" />
                         </div>
                         <h3 class="service-name">Netflix</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201%20Hari%20Sharing%20seharga%20Rp%207.000" class="price-btn">1 Hari Sharing (1 Device, 4K UHD) - Rp 7.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201%20Minggu%20Sharing%20seharga%20Rp%2015.000" class="price-btn">1 Minggu Sharing (1 Device, 4K UHD) - Rp 15.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201%20Bulan%20Sharing%20seharga%20Rp%2035.000" class="price-btn">1 Bulan Sharing (1 Device, Anti Hold) - Rp 35.000</a>
-                        <div class="service-note">noted => dilarang ganti password/email/profil. Melanggar = Garansi Hangus.</div>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P1U%201%20Hari%20seharga%20Rp%204.000" class="price-btn">1P1U - 1 Hari - Rp 4.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P1U%203%20Hari%20seharga%20Rp%206.000" class="price-btn">1P1U - 3 Hari - Rp 6.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P1U%207%20Hari%20seharga%20Rp%2010.000" class="price-btn">1P1U - 7 Hari - Rp 10.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P1U%201%20Bulan%20seharga%20Rp%2028.000" class="price-btn">1P1U - 1 Bulan - Rp 28.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P2U%201%20Hari%20seharga%20Rp%203.000" class="price-btn">1P2U - 1 Hari - Rp 3.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P2U%203%20Hari%20seharga%20Rp%205.000" class="price-btn">1P2U - 3 Hari - Rp 5.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P2U%207%20Hari%20seharga%20Rp%209.000" class="price-btn">1P2U - 7 Hari - Rp 9.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%201P2U%201%20Bulan%20seharga%20Rp%2018.000" class="price-btn">1P2U - 1 Bulan - Rp 18.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20SemiPrivate%201%20Hari%20seharga%20Rp%208.000" class="price-btn">SemiPrivate - 1 Hari - Rp 8.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20SemiPrivate%203%20Hari%20seharga%20Rp%2012.000" class="price-btn">SemiPrivate - 3 Hari - Rp 12.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20SemiPrivate%207%20Hari%20seharga%20Rp%2019.000" class="price-btn">SemiPrivate - 7 Hari - Rp 19.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20SemiPrivate%201%20Bulan%20seharga%20Rp%2038.000" class="price-btn">SemiPrivate - 1 Bulan - Rp 38.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20Private%207%20Hari%20seharga%20Rp%2050.000" class="price-btn">Private - 7 Hari - Rp 50.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20Private%201%20Bulan%20seharga%20Rp%20135.000" class="price-btn">Private - 1 Bulan - Rp 135.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Netflix%20paket%20AntiLimit%201%20Bulan%20seharga%20Rp%2065.000" class="price-btn">AntiLimit - 1 Bulan - Rp 65.000</a>
                     </div>
                 </div>
-                <!-- Disney+ -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-primary">
-                            <i class="bi bi-play-circle-fill"></i>
-                        </div>
-                        <h3 class="service-name">Disney+</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Disney+%20paket%201%20Bulan%20Sharing%20seharga%20Rp%2025.000" class="price-btn">1 Bulan Sharing (1 Device, 4K) - Rp 25.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Disney+%20paket%201%20Bulan%20Private%20seharga%20Rp%2050.000" class="price-btn">1 Bulan Private (Akun Baru, Full Garansi) - Rp 50.000</a>
-                        <div class="service-note">noted => login pakai No. HP. Dilarang logout device lain.</div>
-                    </div>
-                </div>
-                <!-- Viu -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-warning">
-                            <i class="bi bi-tv"></i>
-                        </div>
-                        <h3 class="service-name">Viu</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Viu%20paket%201%20Bulan%20Private%20seharga%20Rp%2015.000" class="price-btn">1 Bulan Private (All Device, No Ads) - Rp 15.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Viu%20paket%206%20Bulan%20Private%20seharga%20Rp%2030.000" class="price-btn">6 Bulan Private (Akun Baru) - Rp 30.000</a>
-                        <div class="service-note">noted => akun Private, bebas login device mana aja.</div>
-                    </div>
-                </div>
-                <!-- Vidio -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-danger">
-                            <i class="bi bi-camera-video"></i>
-                        </div>
-                        <h3 class="service-name">Vidio</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Vidio%20paket%201%20Bulan%20Platinum%20seharga%20Rp%2025.000" class="price-btn">1 Bulan Platinum (All Device, No EPL) - Rp 25.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Vidio%20paket%201%20Bulan%20Diamond%20seharga%20Rp%2080.000" class="price-btn">1 Bulan Diamond (Include EPL) - Rp 80.000</a>
-                        <div class="service-note">noted => platinum tidak termasuk EPL. Diamond include EPL.</div>
-                    </div>
-                </div>
-                <!-- Loklok -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-info">
-                            <i class="bi bi-phone"></i>
-                        </div>
-                        <h3 class="service-name">Loklok</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Loklok%20paket%201%20Bulan%20seharga%20Rp%2015.000" class="price-btn">1 Bulan VIP (1 Device, Tanpa Iklan) - Rp 15.000</a>
-                        <div class="service-note">noted => akun VIP, bebas iklan.</div>
-                    </div>
-                </div>
-                <!-- iQIYI -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-success">
-                            <i class="bi bi-play-btn"></i>
-                        </div>
-                        <h3 class="service-name">iQIYI</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20iQIYI%20paket%201%20Bulan%20Standard%20seharga%20Rp%2020.000" class="price-btn">1 Bulan Standard (1 Device, 720p) - Rp 20.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20iQIYI%20paket%201%20Bulan%20Premium%20seharga%20Rp%2030.000" class="price-btn">1 Bulan Premium (2 Device, 4K) - Rp 30.000</a>
-                        <div class="service-note">noted => akun Premium, kualitas 4K.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Music Section -->
-        <section id="music" class="category-section fade-in-section">
-            <h2 class="section-title">Music</h2>
-            <div class="row g-4">
                 <!-- Spotify -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-success">
-                            <i class="bi bi-spotify"></i>
+                    <div class="service-card product-spotify text-center">
+                        <div class="service-icon">
+                            <img src="assets/spotify.png" alt="Spotify Logo" class="product-logo" />
                         </div>
                         <h3 class="service-name">Spotify</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%201%20Bulan%20Indiv%20seharga%20Rp%2020.000" class="price-btn">1 Bulan Indiv (Akun Sendiri) - Rp 20.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%201%20Bulan%20FamPlan%20seharga%20Rp%2020.000" class="price-btn">1 Bulan FamPlan (Invite Email) - Rp 20.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%203%20Bulan%20seharga%20Rp%2045.000" class="price-btn">3 Bulan (Bisa Perpanjang) - Rp 45.000</a>
-                        <div class="service-note">noted => semuanya only 1 device, garansi jika backfree</div>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Indplan%201%20Bulan%20seharga%20Rp%2025.000" class="price-btn">Indplan - 1 Bulan - Rp 25.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Indplan%202%20Bulan%20seharga%20Rp%2038.000" class="price-btn">Indplan - 2 Bulan - Rp 38.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Indplan%203%20Bulan%20Nogar%20seharga%20Rp%2018.000" class="price-btn">Indplan - 3 Bulan Nogar - Rp 18.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Famplan%201%20Bulan%20seharga%20Rp%2023.000" class="price-btn">Famplan - 1 Bulan - Rp 23.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Famplan%202%20Bulan%20seharga%20Rp%2033.000" class="price-btn">Famplan - 2 Bulan - Rp 33.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Spotify%20paket%20Famplan%203%20Bulan%20Nogar%20seharga%20Rp%2015.000" class="price-btn">Famplan - 3 Bulan Nogar - Rp 15.000</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Editing Section -->
-        <section id="editing" class="category-section fade-in-section">
-            <h2 class="section-title">Editing</h2>
-            <div class="row g-4">
                 <!-- Canva -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-info">
-                            <i class="bi bi-brush"></i>
+                    <div class="service-card product-canva text-center">
+                        <div class="service-icon">
+                            <img src="assets/canva.png" alt="Canva Logo" class="product-logo" />
                         </div>
                         <h3 class="service-name">Canva</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%201%20Bulan%20Member%20seharga%20Rp%205.000" class="price-btn">1 Bulan Member - Rp 5.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%201%20Tahun%20Member%20seharga%20Rp%2010.000" class="price-btn">1 Tahun Member - Rp 10.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Lifetime%20seharga%20Rp%2015.000" class="price-btn">Lifetime - Rp 15.000</a>
-                        <div class="service-note">noted => garansi, legal</div>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Member%201%20Minggu%20seharga%20Rp%201.300" class="price-btn">Member - 1 Minggu - Rp 1.300</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Member%201%20Bulan%20seharga%20Rp%202.500" class="price-btn">Member - 1 Bulan - Rp 2.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Member%203%20Bulan%20seharga%20Rp%203.500" class="price-btn">Member - 3 Bulan - Rp 3.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Member%201%20Tahun%20seharga%20Rp%205.000" class="price-btn">Member - 1 Tahun - Rp 5.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Desain%201%20Minggu%20seharga%20Rp%201.100" class="price-btn">Desain - 1 Minggu - Rp 1.100</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Desain%201%20Bulan%20seharga%20Rp%201.500" class="price-btn">Desain - 1 Bulan - Rp 1.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Desain%203%20Bulan%20seharga%20Rp%203.500" class="price-btn">Desain - 3 Bulan - Rp 3.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Desain%201%20Tahun%20seharga%20Rp%209.000" class="price-btn">Desain - 1 Tahun - Rp 9.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Head%201%20Bulan%20Biasa%20seharga%20Rp%203.500" class="price-btn">Head - 1 Bulan Biasa - Rp 3.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Head%201%20Bulan%20Spesial%20seharga%20Rp%205.500" class="price-btn">Head - 1 Bulan Spesial - Rp 5.500</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Canva%20paket%20Lifetime%20seharga%20Rp%206.000" class="price-btn">Lifetime (Selamanya) - Rp 6.000</a>
                     </div>
                 </div>
                 <!-- CapCut -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-light">
-                            <i class="bi bi-scissors"></i>
+                    <div class="service-card product-capcut text-center">
+                        <div class="service-icon">
+                            <img src="assets/capcut.png" alt="CapCut Logo" class="product-logo" />
                         </div>
                         <h3 class="service-name">CapCut</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%207%20Hari%20Privat%20seharga%20Rp%203.000" class="price-btn">7 Hari Privat - Rp 3.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%2030%20Hari%20Privat%20seharga%20Rp%2015.000" class="price-btn">30 Hari Privat - Rp 15.000</a>
-                        <div class="service-note">noted => no garansi jika full attempt, privat bisa login 2 device</div>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%20Private%207%20Hari%20seharga%20Rp%2010.000" class="price-btn">Private - 7 Hari - Rp 10.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%20Private%201%20Bulan%20seharga%20Rp%2030.000" class="price-btn">Private - 1 Bulan - Rp 30.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%20Sharing%207%20Hari%20seharga%20Rp%208.000" class="price-btn">Sharing - 7 Hari - Rp 8.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20CapCut%20paket%20Sharing%201%20Bulan%20seharga%20Rp%2020.000" class="price-btn">Sharing - 1 Bulan - Rp 20.000</a>
                     </div>
                 </div>
-                <!-- Alight Motion -->
+                <!-- Gemini -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-success">
-                            <i class="bi bi-play-circle"></i>
-                        </div>
-                        <h3 class="service-name">Alight Motion</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Alight%20Motion%20paket%201%20Tahun%20Privat%20seharga%20Rp%205.000" class="price-btn">1 Tahun Privat - Rp 5.000</a>
-                        <div class="service-note">noted => acc seller, fullgaransi, only andro!!</div>
-                    </div>
-                </div>
-                <!-- PicsArt -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon" style="color: #d62976">
-                            <i class="bi bi-palette"></i>
-                        </div>
-                        <h3 class="service-name">PicsArt</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20PicsArt%20paket%201%20Bulan%20Sharing%20seharga%20Rp%2010.000" class="price-btn">1 Bulan Sharing - Rp 10.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20PicsArt%20paket%201%20Bulan%20Privat%20seharga%20Rp%2012.000" class="price-btn">1 Bulan Privat - Rp 12.000</a>
-                        <div class="service-note">noted => acc buyer, full garansi</div>
-                    </div>
-                </div>
-                <!-- Remini -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-danger">
-                            <i class="bi bi-magic"></i>
-                        </div>
-                        <h3 class="service-name">Remini</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Remini%20paket%201%20Bulan%20Sharing%20seharga%20Rp%207.500" class="price-btn">1 Bulan Sharing - Rp 7.500</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Remini%20paket%201%20Bulan%20Privat%20seharga%20Rp%2016.000" class="price-btn">1 Bulan Privat - Rp 16.000</a>
-                        <div class="service-note">noted => bergaransi</div>
-                    </div>
-                </div>
-                <!-- Lightroom -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
+                    <div class="service-card product-gemini text-center">
                         <div class="service-icon text-primary">
-                            <i class="bi bi-images"></i>
+                            <i class="bi bi-stars"></i>
                         </div>
-                        <h3 class="service-name">Lightroom</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Lightroom%20paket%201%20Tahun%20seharga%20Rp%2015.000" class="price-btn">1 Tahun (All Device) - Rp 15.000</a>
-                        <div class="service-note">noted => order wajib sabar, acc only seller</div>
+                        <h3 class="service-name">Gemini</h3>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Gemini%20paket%201%20Bulan%20seharga%20Rp%2015.000" class="price-btn">1 Bulan - Rp 15.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Gemini%20paket%203%20Bulan%20seharga%20Rp%2025.000" class="price-btn">3 Bulan - Rp 25.000</a>
                     </div>
                 </div>
-                <!-- Dazz Cam -->
+                <!-- ChatGPT -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-secondary">
-                            <i class="bi bi-camera"></i>
+                    <div class="service-card product-chatgpt text-center">
+                        <div class="service-icon">
+                            <img src="assets/chatgpt.png" alt="ChatGPT Logo" class="product-logo" />
                         </div>
-                        <h3 class="service-name">Dazz Cam</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Dazz%20Cam%20paket%20Fullpack%20seharga%20Rp%2025.000" class="price-btn">Fullpack (Unlock All Camera) - Rp 25.000</a>
-                        <div class="service-note">noted => unlock all camera</div>
+                        <h3 class="service-name">ChatGPT</h3>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Private%201%20Bulan%20GO%20seharga%20Rp%2085.000" class="price-btn">Private - 1 Bulan GO - Rp 85.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Private%201%20Bulan%20Plus%20seharga%20Rp%2072.000" class="price-btn">Private - 1 Bulan Plus - Rp 72.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Sharing%201%20Bulan%20Plus%20seharga%20Rp%2048.000" class="price-btn">Sharing - 1 Bulan Plus - Rp 48.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Sharing%201%20Bulan%20GO%20seharga%20Rp%2020.000" class="price-btn">Sharing - 1 Bulan GO - Rp 20.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Sharing%203%20Bulan%20seharga%20Rp%2035.000" class="price-btn">Sharing - 3 Bulan - Rp 35.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20ChatGPT%20paket%20Sharing%207%20Hari%20GO%20seharga%20Rp%2012.000" class="price-btn">Sharing - 7 Hari GO - Rp 12.000</a>
+                    </div>
+                </div>
+                <!-- Claude -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="service-card product-claude text-center">
+                        <div class="service-icon">
+                            <img src="assets/claude.png" alt="Claude Logo" class="product-logo" />
+                        </div>
+                        <h3 class="service-name">Claude</h3>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Claude%20paket%20Private%201%20Bulan%20seharga%20Rp%20360.000" class="price-btn">Private - 1 Bulan - Rp 360.000</a>
+                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Claude%20paket%20Sharing%201%20Bulan%20seharga%20Rp%2050.000" class="price-btn">Sharing - 1 Bulan - Rp 50.000</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="category-section fade-in-section">
-            <h2 class="section-title">Education</h2>
-            <div class="row g-4">
-                <!-- DeepL -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-primary">
-                            <i class="bi bi-translate"></i>
-                        </div>
-                        <h3 class="service-name">DeepL</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20DeepL%20paket%20Individual%20Privat%201%20Bulan%20seharga%20Rp%2030.000" class="price-btn">Individual Privat 1b - Rp 30.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20DeepL%20paket%20Member%20seharga%20Rp%2012.000" class="price-btn">Member - Rp 12.000</a>
-                        <div class="service-note">noted => bergaransi, plan pro advance</div>
-                    </div>
-                </div>
-                <!-- Grammarly -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-success">
-                            <i class="bi bi-check-circle"></i>
-                        </div>
-                        <h3 class="service-name">Grammarly</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Grammarly%20paket%201%20Bulan%20Privat%20seharga%20Rp%2020.000" class="price-btn">1 Bulan Privat - Rp 20.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Grammarly%20paket%201%20Bulan%20Sharing%20seharga%20Rp%207.000" class="price-btn">1 Bulan Sharing - Rp 7.000</a>
-                        <div class="service-note">noted => akun seller, bergaransi</div>
-                    </div>
-                </div>
-                <!-- Scribd -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-info">
-                            <i class="bi bi-book"></i>
-                        </div>
-                        <h3 class="service-name">Scribd</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Scribd%20paket%201%20Bulan%20Sharing%20seharga%20Rp%208.000" class="price-btn">1 Bulan Sharing - Rp 8.000</a>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Scribd%20paket%201%20Bulan%20Privat%20seharga%20Rp%2015.000" class="price-btn">1 Bulan Privat - Rp 15.000</a>
-                        <div class="service-note">noted => full garansi</div>
-                    </div>
-                </div>
-                <!-- Zoom -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="service-card text-center">
-                        <div class="service-icon text-primary">
-                            <i class="bi bi-camera-video-fill"></i>
-                        </div>
-                        <h3 class="service-name">Zoom</h3>
-                        <a href="https://wa.me/6283847105847?text=Halo%20gan,%20saya%20mau%20beli%20Zoom%20paket%201%20Bulan%20Pro%20seharga%20Rp%2035.000" class="price-btn">1 Bulan Pro (100 Peserta, Unlimited) - Rp 35.000</a>
-                        <div class="service-note">noted => full fitur pro</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- General Notes -->
+        <div class="global-note fade-in-section">
+            <h3 class="global-note-title">Kenapa harus di DiksStore?</h3>
+            <ul class="global-note-list">
+                <li><span class="note-check">&#10003;</span> SEMUA LAYANAN = FULL GARANSI!</li>
+                <li><span class="note-check">&#10003;</span> Proses sesuai urutan pesanan</li>
+                <li><span class="note-check">&#10003;</span> Sharing = lebih hemat | Private = sendiri, bebas</li>
+                <li><span class="note-check">&#10003;</span> Tanyakan detail &amp; pilihan lainnya via WA!</li>
+            </ul>
+            <a href="https://wa.me/6283847105847" class="wa-btn"><i class="bi bi-whatsapp"></i> Hubungi WA: 083847105847</a>
+        </div>
 
 
     </div>
