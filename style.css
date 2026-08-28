@@ -486,17 +486,7 @@ footer p {
 
 @media (max-width: 520px) {
     .service-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
         padding: 1.2rem 0.9rem 1.1rem;
-    }
-    .service-card .service-icon,
-    .service-card .service-name {
-        grid-column: 1 / -1;
-    }
-    .service-card .price-btn {
-        margin-bottom: 0 !important;
     }
     .service-icon .product-logo {
         height: 62px;
