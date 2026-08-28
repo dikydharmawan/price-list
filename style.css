@@ -398,18 +398,123 @@ footer p {
     .section-title {
         font-size: 2rem;
     }
+    .service-card {
+        padding: 1.6rem 1.2rem;
+    }
+    .service-icon {
+        font-size: 4rem;
+        margin-bottom: 1.1rem;
+    }
+    .service-icon .product-logo {
+        height: 88px;
+    }
+    .service-name {
+        font-size: 1.35rem;
+    }
 }
 
 @media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+    .navbar-brand .brand-logo {
+        height: 34px;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .section-subtitle {
+        font-size: 0.92rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.6rem;
+    }
     .service-card {
-        padding: 1.5rem;
+        padding: 1.4rem 1rem;
+        border-radius: 20px;
+    }
+    .service-icon {
+        font-size: 3.2rem;
+        margin-bottom: 1rem;
+    }
+    .service-icon .product-logo {
+        height: 76px;
+    }
+    .service-name {
+        font-size: 1.25rem;
+        margin-bottom: 1.1rem;
     }
     .price-btn {
         font-size: 0.85rem;
         padding: 0.6rem 0.8rem;
     }
-    .section-title {
-        font-size: 1.8rem;
+    .search-container {
+        margin-top: 84px;
+    }
+    .search-input {
+        font-size: 1rem;
+        padding: 0.85rem 1.2rem;
+        padding-left: 2.8rem;
+    }
+    .global-note {
+        padding: 2rem 1.1rem;
+        margin: 2.5rem auto;
+        border-radius: 22px;
+    }
+    .global-note-title {
+        font-size: 1.45rem;
+    }
+    .global-note-list {
+        margin-bottom: 1.4rem;
+    }
+    .global-note-list li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.7rem;
+    }
+    .wa-btn {
+        width: 100%;
+        padding: 0.95rem 1.5rem;
+        font-size: 1rem;
+    }
+    #backToTop {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .service-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        padding: 1.2rem 0.9rem 1.1rem;
+    }
+    .service-card .service-icon,
+    .service-card .service-name {
+        grid-column: 1 / -1;
+    }
+    .service-card .price-btn {
+        margin-bottom: 0 !important;
+    }
+    .service-icon .product-logo {
+        height: 62px;
+    }
+    .service-icon {
+        font-size: 2.6rem;
+        margin-bottom: 0.8rem;
+    }
+    .price-btn {
+        font-size: 0.78rem;
+        padding: 0.55rem 0.4rem;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .service-icon .product-logo {
+        height: 54px;
     }
 }
 
