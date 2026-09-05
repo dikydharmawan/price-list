@@ -377,10 +377,17 @@
         }
 
         function loadRemote() {
-            return fetch(API_BASE + "/api/data", { headers: { "Cache-Control": "no-cache" } }).then(function (r) {
-                if (!r.ok) throw new Error("HTTP " + r.status);
-                return r.json();
-            });
+            return fetch(API_BASE + "/api/data", { headers: { "Cache-Control": "no-cache" } })
+                .then(function (r) {
+                    if (!r.ok) throw new Error("HTTP " + r.status);
+                    return r.json();
+                })
+                .catch(function () {
+                    return fetch("data.json", { headers: { "Cache-Control": "no-cache" } }).then(function (r) {
+                        if (!r.ok) throw new Error("HTTP " + r.status);
+                        return r.json();
+                    });
+                });
         }
 
         function afterLogin() {
