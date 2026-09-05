@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const serviceName = card
         .querySelector(".service-name")
         .textContent.toLowerCase();
-      const parentCol = card.closest(".col-12");
+      const parentCol = card.parentElement;
 
       if (serviceName.includes(searchTerm)) {
         parentCol.style.display = "block";
@@ -25,19 +25,38 @@ document.addEventListener("DOMContentLoaded", function () {
   // Back to Top Button
   const backToTopBtn = document.getElementById("backToTop");
 
+  const scrollBar = document.getElementById("scrollProgress");
+  function updateScrollProgress() {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    scrollBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+  }
+
   window.addEventListener("scroll", function () {
     if (window.scrollY > 300) {
       backToTopBtn.style.display = "flex";
     } else {
       backToTopBtn.style.display = "none";
     }
+    updateScrollProgress();
   });
+  updateScrollProgress();
 
   backToTopBtn.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  });
+
+  // Cursor Glow Follower
+  const cursorGlow = document.createElement("div");
+  cursorGlow.className = "cursor-glow";
+  document.body.appendChild(cursorGlow);
+
+  window.addEventListener("mousemove", function (e) {
+    cursorGlow.style.transform =
+      "translate3d(" + (e.clientX - 220) + "px," + (e.clientY - 220) + "px,0)";
   });
 
   // Scroll Animations
@@ -51,8 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
-        // Optional: Stop observing once visible
-        // observer.unobserve(entry.target);
+        // Stagger reveal: cards fade up one by one
+        const cards = entry.target.querySelectorAll(".service-card");
+        cards.forEach((card, i) => {
+          const delay = i * 90;
+          card.style.transitionDelay = delay + "ms";
+          setTimeout(() => {
+            card.classList.add("is-visible");
+            setTimeout(() => {
+              card.style.transitionDelay = "";
+            }, delay + 700);
+          }, 40);
+        });
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
