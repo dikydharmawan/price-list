@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
+  const priceRow = document.getElementById("priceRow");
+  const listView = document.getElementById("listView");
+  const detailView = document.getElementById("detailView");
+  const detailContent = document.getElementById("detailContent");
+  const btnBack = document.getElementById("btnBack");
 
   function escapeHtml(str) {
     return String(str).replace(/[&<>"']/g, function (c) {
@@ -14,27 +19,72 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buatTautanWa(wa, pesan) {
-    return (
-      "https://wa.me/" +
-      wa +
-      "?text=" +
-      encodeURIComponent(pesan)
-    );
+    return "https://wa.me/" + wa + "?text=" + encodeURIComponent(pesan);
   }
 
-  function buatKartu(layanan, wa) {
-    const ikon =
-      layanan.ikon.type === "img"
-        ? '<img src="' +
+  function buatIkon(layanan) {
+    return layanan.ikon.type === "img"
+      ? '<img src="' +
           layanan.ikon.src +
           '" alt="' +
           escapeHtml(layanan.ikon.alt || layanan.nama + " Logo") +
           '" class="product-logo" />'
-        : '<i class="' + layanan.ikon.class + '"></i>';
+      : '<i class="' + layanan.ikon.class + '"></i>';
+  }
 
-    const grupHtml = layanan.grup
+  // Tampilan utama: grid tile sederhana, tanpa harga
+  function buatTile(layanan) {
+    return (
+      '<div class="col-4 col-md-3 col-lg-2">' +
+      '<button type="button" class="service-card service-card-grid product-' +
+      escapeHtml(layanan.id) +
+      ' text-center" data-id="' +
+      escapeHtml(layanan.id) +
+      '">' +
+      '<span class="service-icon">' +
+      buatIkon(layanan) +
+      "</span>" +
+      '<h3 class="service-name">' +
+      escapeHtml(layanan.nama) +
+      "</h3>" +
+      '<span class="service-view-hint"><i class="bi bi-chevron-right"></i></span>' +
+      "</button>" +
+      "</div>"
+    );
+  }
+
+  var dataSaatIni = null;
+  var layananTerbuka = null;
+
+  function renderDaftar(data) {
+    dataSaatIni = data;
+    const cards = (data.layanan || [])
+      .map(function (layanan) {
+        return buatTile(layanan);
+      })
+      .join("");
+    priceRow.innerHTML = cards;
+
+    // Stagger reveal: tiles fade up one by one
+    const allCards = priceRow.querySelectorAll(".service-card");
+    allCards.forEach(function (card, i) {
+      const delay = i * 60;
+      card.style.transitionDelay = delay + "ms";
+      setTimeout(function () {
+        card.classList.add("is-visible");
+        setTimeout(function () {
+          card.style.transitionDelay = "";
+        }, delay + 700);
+      }, 40);
+    });
+  }
+
+  // Tampilan detail: harga & paket per layanan
+  function renderDetail(layanan) {
+    const wa = (dataSaatIni && dataSaatIni.wa) || "6283847105847";
+    const grupHtml = (layanan.grup || [])
       .map(function (g) {
-        const paketHtml = g.paket
+        const paketHtml = (g.paket || [])
           .map(function (p) {
             return (
               '<a href="' +
@@ -55,66 +105,49 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .join("");
 
-    return (
-      '<div class="col-6 col-md-4 col-lg-3">' +
-      '<div class="service-card product-' +
+    detailContent.innerHTML =
+      '<div class="detail-card product-' +
       escapeHtml(layanan.id) +
-      ' text-center">' +
-      '<div class="service-icon">' +
-      ikon +
-      "</div>" +
-      '<h3 class="service-name">' +
+      '">' +
+      '<div class="detail-head">' +
+      '<span class="service-icon">' +
+      buatIkon(layanan) +
+      "</span>" +
+      '<h2 class="detail-title">' +
       escapeHtml(layanan.nama) +
-      "</h3>" +
-      grupHtml +
+      "</h2>" +
       "</div>" +
-      "</div>"
-    );
+      grupHtml +
+      "</div>";
   }
 
-  function renderDaftar(data) {
-    const container = document.getElementById("priceRow");
-    const wa = data.wa || "6283847105847";
-    const cards = (data.layanan || [])
-      .map(function (layanan) {
-        return buatKartu(layanan, wa);
-      })
-      .join("");
-    container.innerHTML = cards;
-
-    // Stagger reveal: cards fade up one by one
-    const allCards = container.querySelectorAll(".service-card");
-    allCards.forEach(function (card, i) {
-      const delay = i * 90;
-      card.style.transitionDelay = delay + "ms";
-      setTimeout(function () {
-        card.classList.add("is-visible");
-        setTimeout(function () {
-          card.style.transitionDelay = "";
-        }, delay + 700);
-      }, 40);
+  function bukaDetail(id) {
+    if (!dataSaatIni) return;
+    const layanan = (dataSaatIni.layanan || []).find(function (l) {
+      return String(l.id) === String(id);
     });
+    if (!layanan) return;
+    layananTerbuka = layanan.id;
+    renderDetail(layanan);
+    listView.classList.add("d-none");
+    detailView.classList.remove("d-none");
+    detailView.classList.add("is-visible");
+    window.scrollTo({ top: 0 });
   }
 
-  // Search — listener dipasang SEKALI saja (bukan tiap render)
-  var searchTermSebelumnya = "";
-  searchInput.addEventListener("input", function (e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const allCards = document.querySelectorAll("#priceRow .service-card");
-    allCards.forEach(function (card) {
-      const serviceName = card
-        .querySelector(".service-name")
-        .textContent.toLowerCase();
-      const parentCol = card.parentElement;
-      if (serviceName.includes(searchTerm)) {
-        parentCol.style.display = "block";
-        card.style.animation = "fadeIn 0.5s ease forwards";
-      } else {
-        parentCol.style.display = "none";
-      }
-    });
-    searchTermSebelumnya = searchTerm;
+  function kembaliKeDaftar() {
+    layananTerbuka = null;
+    detailView.classList.add("d-none");
+    listView.classList.remove("d-none");
+    window.scrollTo({ top: 0 });
+  }
+
+  priceRow.addEventListener("click", function (e) {
+    const card = e.target.closest(".service-card-grid");
+    if (card) bukaDetail(card.getAttribute("data-id"));
   });
+
+  btnBack.addEventListener("click", kembaliKeDaftar);
 
   function ambilData() {
     return fetch("api/data", { cache: "no-store" }).then(function (res) {
@@ -142,11 +175,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (h !== lastHash) {
           lastHash = h;
           renderDaftar(data);
+          if (layananTerbuka !== null) {
+            const layanan = (data.layanan || []).find(function (l) {
+              return String(l.id) === String(layananTerbuka);
+            });
+            if (layanan) renderDetail(layanan);
+            else kembaliKeDaftar();
+          }
         }
       })
       .catch(function (err) {
         if (!lastHash) {
-          document.getElementById("priceRow").innerHTML =
+          priceRow.innerHTML =
             '<div class="col-12 text-center text-muted">Data gagal dimuat. Hubungi admin via WA.</div>';
         }
         console.error(err);
@@ -162,6 +202,24 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("focus", muatDanRender);
   document.addEventListener("visibilitychange", function () {
     if (!document.hidden) muatDanRender();
+  });
+
+  // Search — listener dipasang SEKALI saja (bukan tiap render)
+  searchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const allCards = document.querySelectorAll("#priceRow .service-card");
+    allCards.forEach(function (card) {
+      const serviceName = card
+        .querySelector(".service-name")
+        .textContent.toLowerCase();
+      const parentCol = card.parentElement;
+      if (serviceName.includes(searchTerm)) {
+        parentCol.style.display = "block";
+        card.style.animation = "fadeIn 0.5s ease forwards";
+      } else {
+        parentCol.style.display = "none";
+      }
+    });
   });
 
   // Back to Top Button
@@ -208,8 +266,8 @@ document.addEventListener("DOMContentLoaded", function () {
     threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
@@ -218,27 +276,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }, observerOptions);
 
   const fadeElements = document.querySelectorAll(".fade-in-section");
-  fadeElements.forEach((el) => observer.observe(el));
-
-  // Navbar Active State
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 200) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
-    });
+  fadeElements.forEach(function (el) {
+    observer.observe(el);
   });
 });
 
