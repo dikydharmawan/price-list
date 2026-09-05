@@ -655,7 +655,7 @@
 
         document.getElementById("saveBtn").addEventListener("click", function () {
             if (!DATA) return;
-            var payload = readAll();
+            var payload = { layanan: readAll() };
             var wa = waFromField();
             if (!wa || !waValid(wa)) {
                 if (!wa) wa = waDefault();
