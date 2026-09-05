@@ -158,6 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Auto-refresh: cek perubahan tiap 30 detik
   setInterval(muatDanRender, 30000);
 
+  // Refresh cepat saat tab kembali aktif / difokuskan
+  window.addEventListener("focus", muatDanRender);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) muatDanRender();
+  });
+
   // Back to Top Button
   const backToTopBtn = document.getElementById("backToTop");
 

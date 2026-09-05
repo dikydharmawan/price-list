@@ -77,7 +77,11 @@ const server = http.createServer(async (req, res) => {
   const ext = path.extname(f).toLowerCase();
   try {
     const data = fs.readFileSync(f);
-    res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+    const noCache = [".html", ".js", ".css", ".json"].includes(ext);
+    res.writeHead(200, {
+      "Content-Type": MIME[ext] || "application/octet-stream",
+      "Cache-Control": noCache ? "no-store" : "public, max-age=86400",
+    });
     res.end(data);
   } catch (e) {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
