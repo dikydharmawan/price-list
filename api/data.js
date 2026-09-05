@@ -8,7 +8,7 @@ const HERE =
     : fileURLToPath(new URL(".", import.meta.url));
 
 const KEY = "diksstore:data";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "diksstore080847";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "diksstore120704";
 const STORE_FILE = process.env.DATA_STORE_FILE || "";
 const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || "";
 const KV_TOKEN =

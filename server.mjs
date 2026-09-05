@@ -106,6 +106,6 @@ server.listen(PORT, () => {
   console.log("DiksStore dev server berjalan:");
   console.log("  Website : http://localhost:" + PORT + "/");
   console.log("  Admin   : http://localhost:" + PORT + "/admin.html");
-  console.log("  Password admin default : diksstore080847");
+  console.log("  Password admin default : diksstore120704");
   console.log("  Simpan admin -> local-store.json (lokal, tidak mempengaruhi data.json)");
 });
