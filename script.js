@@ -94,24 +94,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }, delay + 700);
       }, 40);
     });
-
-    // Wire search after render
-    searchInput.addEventListener("input", function (e) {
-      const searchTerm = e.target.value.toLowerCase();
-      allCards.forEach(function (card) {
-        const serviceName = card
-          .querySelector(".service-name")
-          .textContent.toLowerCase();
-        const parentCol = card.parentElement;
-        if (serviceName.includes(searchTerm)) {
-          parentCol.style.display = "block";
-          card.style.animation = "fadeIn 0.5s ease forwards";
-        } else {
-          parentCol.style.display = "none";
-        }
-      });
-    });
   }
+
+  // Search — listener dipasang SEKALI saja (bukan tiap render)
+  var searchTermSebelumnya = "";
+  searchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const allCards = document.querySelectorAll("#priceRow .service-card");
+    allCards.forEach(function (card) {
+      const serviceName = card
+        .querySelector(".service-name")
+        .textContent.toLowerCase();
+      const parentCol = card.parentElement;
+      if (serviceName.includes(searchTerm)) {
+        parentCol.style.display = "block";
+        card.style.animation = "fadeIn 0.5s ease forwards";
+      } else {
+        parentCol.style.display = "none";
+      }
+    });
+    searchTermSebelumnya = searchTerm;
+  });
 
   function ambilData() {
     return fetch("api/data", { cache: "no-store" }).then(function (res) {
@@ -127,16 +130,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  ambilData()
-    .catch(function () {
-      return ambilDataCadangan();
-    })
-    .then(renderDaftar)
-    .catch(function (err) {
-      document.getElementById("priceRow").innerHTML =
-        '<div class="col-12 text-center text-muted">Data gagal dimuat. Hubungi admin via WA.</div>';
-      console.error(err);
-    });
+  var lastHash = "";
+
+  function muatDanRender() {
+    ambilData()
+      .catch(function () {
+        return ambilDataCadangan();
+      })
+      .then(function (data) {
+        var h = JSON.stringify(data);
+        if (h !== lastHash) {
+          lastHash = h;
+          renderDaftar(data);
+        }
+      })
+      .catch(function (err) {
+        if (!lastHash) {
+          document.getElementById("priceRow").innerHTML =
+            '<div class="col-12 text-center text-muted">Data gagal dimuat. Hubungi admin via WA.</div>';
+        }
+        console.error(err);
+      });
+  }
+
+  muatDanRender();
+
+  // Auto-refresh: cek perubahan tiap 30 detik
+  setInterval(muatDanRender, 30000);
 
   // Back to Top Button
   const backToTopBtn = document.getElementById("backToTop");
