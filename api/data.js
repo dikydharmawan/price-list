@@ -49,13 +49,11 @@ async function kvGet() {
 async function kvSet(val) {
   if (STORE_FILE) return fileSet(val);
   if (!KV_URL || !KV_TOKEN) throw new Error("Penyimpanan (KV/Redis) belum dikonfigurasi.");
-  const r = await fetch(kvBase() + "/set/" + KEY, {
+  // Nilai dikirim sebagai path ber-URL-encode (bukan body JSON.stringify ulang),
+  // supaya tersimpan sebagai teks mentah, bukan string JSON ter-double-encode.
+  const r = await fetch(kvBase() + "/set/" + KEY + "/" + encodeURIComponent(val), {
     method: "POST",
-    headers: {
-      Authorization: "Bearer " + KV_TOKEN,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(val),
+    headers: { Authorization: "Bearer " + KV_TOKEN },
   });
   const j = await r.json();
   if (!r.ok || (j && j.error)) {
@@ -78,6 +76,22 @@ function readSeed() {
     }
   }
   return { wa: "6283847105847", layanan: [] };
+}
+
+// Tahan-banting: nilai lama yang ter-double-encode / hasil parse aneh
+// diurai berulang sampai jadi objek, jika gagal kembalikan null.
+function parseStored(s) {
+  var v = s;
+  for (var i = 0; i < 3; i++) {
+    if (typeof v === "object" && v !== null) return v;
+    if (typeof v !== "string") return null;
+    try {
+      v = JSON.parse(v);
+    } catch (e) {
+      return null;
+    }
+  }
+  return v;
 }
 
 function validate(d) {
@@ -121,11 +135,11 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const stored = await kvGet();
-      const data = stored ? JSON.parse(stored) : readSeed();
+      const data = (stored && parseStored(stored)) || readSeed();
       res.writeHead(200, {
         ...enabledCors,
         "Content-Type": "application/json; charset=utf-8",
-        "Cache-Control": "public, max-age=0, s-maxage=120",
+        "Cache-Control": "public, max-age=0, s-maxage=30",
       });
       return res.end(JSON.stringify(data));
     } catch (err) {
