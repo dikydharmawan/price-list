@@ -32,8 +32,24 @@ document.addEventListener("DOMContentLoaded", function () {
       : '<i class="' + layanan.ikon.class + '"></i>';
   }
 
-  // Tampilan utama: grid tile sederhana, tanpa harga
+  // Harga termurah pertama dari semua paket layanan (dipakai utk tulisan "mulai Rp ...")
+  function hargaMulai(layanan) {
+    var min = null;
+    (layanan.grup || []).forEach(function (g) {
+      (g.paket || []).forEach(function (p) {
+        var m = String(p.label).match(/Rp\s*([\d.,]+)/);
+        if (m) {
+          var v = parseFloat(String(m[1]).replace(/\./g, "").replace(/,/g, "."));
+          if (!isNaN(v) && (min === null || v < min)) min = v;
+        }
+      });
+    });
+    return min === null ? "" : "mulai Rp " + min.toLocaleString("id-ID");
+  }
+
+  // Tampilan utama: grid tile sederhana, tanpa harga penuh
   function buatTile(layanan) {
+    const mulai = hargaMulai(layanan);
     return (
       '<div class="col-4 col-md-3 col-lg-2">' +
       '<button type="button" class="service-card service-card-grid product-' +
@@ -47,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
       '<h3 class="service-name">' +
       escapeHtml(layanan.nama) +
       "</h3>" +
-      '<span class="service-view-hint"><i class="bi bi-chevron-right"></i></span>' +
+      (mulai ? '<span class="tile-price">' + mulai + "</span>" : "") +
+      '<span class="service-view-hint">Lihat Harga <i class="bi bi-chevron-right"></i></span>' +
       "</button>" +
       "</div>"
     );
@@ -58,6 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderDaftar(data) {
     dataSaatIni = data;
+    const countEl = document.getElementById("layananCount");
+    if (countEl) {
+      countEl.textContent = (data.layanan || []).length + " Layanan";
+    }
     const cards = (data.layanan || [])
       .map(function (layanan) {
         return buatTile(layanan);
