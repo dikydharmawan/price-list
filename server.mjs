@@ -65,7 +65,20 @@ const server = http.createServer(async (req, res) => {
       },
     };
     const h = await getApi();
-    return h(shimReq(req, body), sres);
+    const result = await h(shimReq(req, body), sres);
+    // Setelah admin menyimpan (POST sukses), ikut update data.json
+    // supaya perubahan juga terlihat saat website dibuka lewat file://
+    try {
+      if (req.method === "POST" && res.statusCode === 200 && body) {
+        const d = JSON.parse(body);
+        if (d && d.layanan && Array.isArray(d.layanan)) {
+          fs.writeFileSync(path.join(ROOT, "data.json"), JSON.stringify(d, null, 2), "utf8");
+        }
+      }
+    } catch (e) {
+      console.error("gagal sinkron data.json:", e.message);
+    }
+    return result;
   }
 
   if (p === "/") p = "/index.html";
