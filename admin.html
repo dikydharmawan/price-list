@@ -637,6 +637,14 @@
             }
         });
 
+        // live preview: teks judul paket di atas kolom label ikut berubah saat diketik
+        document.getElementById("services").addEventListener("input", function (e) {
+            if (e.target && e.target.tagName === "INPUT" && e.target.id && e.target.id.indexOf("_label") > -1) {
+                var head = document.getElementById(e.target.id.replace("_label", "_head"));
+                if (head) head.textContent = e.target.value || "Paket baru";
+            }
+        });
+
         function waFromField() {
             var raw = document.getElementById("fWa").value || "";
             var digits = raw.replace(/[^0-9]/g, "");
