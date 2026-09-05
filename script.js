@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
-    return min === null ? "" : "mulai Rp " + min.toLocaleString("id-ID");
+    return min === null ? "" : "Mulai Rp " + min.toLocaleString("id-ID");
   }
 
   // Tampilan utama: grid tile sederhana, tanpa harga penuh
