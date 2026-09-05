@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/data.js": {
+      "includeFiles": "data.json",
+      "maxDuration": 10
+    }
+  }
+}

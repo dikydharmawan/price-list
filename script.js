@@ -1,26 +1,142 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Search Functionality
   const searchInput = document.getElementById("searchInput");
-  const serviceCards = document.querySelectorAll(".service-card");
 
-  searchInput.addEventListener("input", function (e) {
-    const searchTerm = e.target.value.toLowerCase();
-
-    serviceCards.forEach((card) => {
-      const serviceName = card
-        .querySelector(".service-name")
-        .textContent.toLowerCase();
-      const parentCol = card.parentElement;
-
-      if (serviceName.includes(searchTerm)) {
-        parentCol.style.display = "block";
-        // Add animation for reappearing items
-        card.style.animation = "fadeIn 0.5s ease forwards";
-      } else {
-        parentCol.style.display = "none";
-      }
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[c];
     });
-  });
+  }
+
+  function buatTautanWa(wa, pesan) {
+    return (
+      "https://wa.me/" +
+      wa +
+      "?text=" +
+      encodeURIComponent(pesan)
+    );
+  }
+
+  function buatKartu(layanan, wa) {
+    const ikon =
+      layanan.ikon.type === "img"
+        ? '<img src="' +
+          layanan.ikon.src +
+          '" alt="' +
+          escapeHtml(layanan.ikon.alt || layanan.nama + " Logo") +
+          '" class="product-logo" />'
+        : '<i class="' + layanan.ikon.class + '"></i>';
+
+    const grupHtml = layanan.grup
+      .map(function (g) {
+        const paketHtml = g.paket
+          .map(function (p) {
+            return (
+              '<a href="' +
+              buatTautanWa(wa, p.pesan) +
+              '" class="price-btn" target="_blank" rel="noopener">' +
+              escapeHtml(p.label) +
+              "</a>"
+            );
+          })
+          .join("");
+        return (
+          '<div class="pack-group"><p class="pack-group-title">' +
+          escapeHtml(g.judul) +
+          "</p>" +
+          paketHtml +
+          "</div>"
+        );
+      })
+      .join("");
+
+    return (
+      '<div class="col-6 col-md-4 col-lg-3">' +
+      '<div class="service-card product-' +
+      escapeHtml(layanan.id) +
+      ' text-center">' +
+      '<div class="service-icon">' +
+      ikon +
+      "</div>" +
+      '<h3 class="service-name">' +
+      escapeHtml(layanan.nama) +
+      "</h3>" +
+      grupHtml +
+      "</div>" +
+      "</div>"
+    );
+  }
+
+  function renderDaftar(data) {
+    const container = document.getElementById("priceRow");
+    const wa = data.wa || "6283847105847";
+    const cards = (data.layanan || [])
+      .map(function (layanan) {
+        return buatKartu(layanan, wa);
+      })
+      .join("");
+    container.innerHTML = cards;
+
+    // Stagger reveal: cards fade up one by one
+    const allCards = container.querySelectorAll(".service-card");
+    allCards.forEach(function (card, i) {
+      const delay = i * 90;
+      card.style.transitionDelay = delay + "ms";
+      setTimeout(function () {
+        card.classList.add("is-visible");
+        setTimeout(function () {
+          card.style.transitionDelay = "";
+        }, delay + 700);
+      }, 40);
+    });
+
+    // Wire search after render
+    searchInput.addEventListener("input", function (e) {
+      const searchTerm = e.target.value.toLowerCase();
+      allCards.forEach(function (card) {
+        const serviceName = card
+          .querySelector(".service-name")
+          .textContent.toLowerCase();
+        const parentCol = card.parentElement;
+        if (serviceName.includes(searchTerm)) {
+          parentCol.style.display = "block";
+          card.style.animation = "fadeIn 0.5s ease forwards";
+        } else {
+          parentCol.style.display = "none";
+        }
+      });
+    });
+  }
+
+  function ambilData() {
+    return fetch("api/data", { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("Gagal memuat API");
+      return res.json();
+    });
+  }
+
+  function ambilDataCadangan() {
+    return fetch("data.json?v=" + Date.now()).then(function (res) {
+      if (!res.ok) throw new Error("Gagal memuat data.json");
+      return res.json();
+    });
+  }
+
+  ambilData()
+    .catch(function () {
+      return ambilDataCadangan();
+    })
+    .then(renderDaftar)
+    .catch(function (err) {
+      document.getElementById("priceRow").innerHTML =
+        '<div class="col-12 text-center text-muted">Data gagal dimuat. Hubungi admin via WA.</div>';
+      console.error(err);
+    });
 
   // Back to Top Button
   const backToTopBtn = document.getElementById("backToTop");
@@ -59,29 +175,17 @@ document.addEventListener("DOMContentLoaded", function () {
       "translate3d(" + (e.clientX - 220) + "px," + (e.clientY - 220) + "px,0)";
   });
 
-  // Scroll Animations
+  // Scroll Animations for static sections (payment, notes, footer)
   const observerOptions = {
     root: null,
     rootMargin: "0px",
     threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
-        // Stagger reveal: cards fade up one by one
-        const cards = entry.target.querySelectorAll(".service-card");
-        cards.forEach((card, i) => {
-          const delay = i * 90;
-          card.style.transitionDelay = delay + "ms";
-          setTimeout(() => {
-            card.classList.add("is-visible");
-            setTimeout(() => {
-              card.style.transitionDelay = "";
-            }, delay + 700);
-          }, 40);
-        });
         observer.unobserve(entry.target);
       }
     });
@@ -98,7 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let current = "";
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
       if (pageYOffset >= sectionTop - 200) {
         current = section.getAttribute("id");
       }

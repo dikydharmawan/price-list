@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin DiksStore</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --green: #16a34a;
+            --green-dark: #15803d;
+            --bg: #f2f7f4;
+            --border: #d7e4dc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Outfit", sans-serif;
+            background: var(--bg);
+            color: #111827;
+            min-height: 100vh;
+            padding: 1.25rem;
+        }
+
+        .wrap {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        header h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        header h1 img {
+            height: 38px;
+        }
+
+        .btn {
+            border: 1px solid var(--border);
+            background: #fff;
+            color: #111827;
+            border-radius: 12px;
+            padding: .6rem 1rem;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(22, 163, 74, .18);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            border-color: var(--green);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+        }
+
+        .btn-danger {
+            background: #fff;
+            border-color: #f3c6c6;
+            color: #dc2626;
+        }
+
+        .btn-sm {
+            padding: .35rem .65rem;
+            font-size: .8rem;
+            border-radius: 9px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.1rem 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, .06);
+        }
+
+        .card-head {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            justify-content: space-between;
+            margin-bottom: .9rem;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .card-title small {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        label {
+            display: block;
+            font-size: .78rem;
+            font-weight: 600;
+            color: #475569;
+            margin: .65rem 0 .25rem;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: .65rem .8rem;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            font-family: inherit;
+            font-size: .92rem;
+            background: #fff;
+            color: #111827;
+        }
+
+        input:focus {
+            outline: 2px solid rgba(22, 163, 74, .35);
+            border-color: var(--green);
+        }
+
+        .row2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .75rem;
+        }
+
+        .group-box {
+            background: #f6faf7;
+            border: 1px dashed #c3d9cc;
+            border-radius: 14px;
+            padding: .9rem 1rem;
+            margin: .65rem 0;
+        }
+
+        .group-box>.group-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .pkg {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            padding: .7rem .9rem;
+            margin: .5rem 0;
+        }
+
+        .pkg-label {
+            display: flex;
+            gap: .4rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .muted {
+            color: #64748b;
+            font-size: .85rem;
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #111827;
+            color: #fff;
+            padding: .7rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: .9rem;
+            opacity: 0;
+            transition: all .35s ease;
+            z-index: 99;
+            pointer-events: none;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        #toast.ok {
+            background: var(--green);
+        }
+
+        #toast.err {
+            background: #dc2626;
+        }
+
+        .login {
+            max-width: 400px;
+            margin: 8vh auto;
+            text-align: center;
+        }
+
+        .login img {
+            height: 80px;
+            margin-bottom: .75rem;
+        }
+
+        .login input {
+            text-align: center;
+            margin-bottom: .75rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 1rem 0 .65rem;
+        }
+
+        .icon-tab {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .5rem;
+        }
+
+        .icon-tab input {
+            font-size: .82rem;
+        }
+
+        details.help {
+            margin: 1rem 0;
+        }
+
+        details.help summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--green-dark);
+            font-size: .9rem;
+        }
+
+        details.help ol {
+            margin: .6rem 0 0 1.3rem;
+            font-size: .9rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 520px) {
+            .row2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <h1><img src="assets/logo-diksstore.png" alt="DiksStore" /> Admin DiksStore</h1>
+            <button id="logoutBtn" class="btn btn-sm" style="display:none">Keluar</button>
+        </header>
+
+        <!-- Login -->
+        <div id="loginView" class="login card">
+            <img src="assets/logo-diksstore.png" alt="DiksStore" />
+            <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:.25rem">Halaman Admin</h2>
+            <p class="muted" style="margin-bottom:1rem">Masukkan password untuk mengelola harga.</p>
+            <input type="password" id="passInput" placeholder="Password admin" autocomplete="current-password" />
+            <button class="btn btn-primary" id="loginBtn" style="width:100%">Masuk</button>
+            <div class="muted" id="loginErr" style="color:#dc2626;margin-top:.6rem"></div>
+        </div>
+
+        <!-- Editor -->
+        <div id="editorView" style="display:none">
+
+            <div class="card">
+                <div class="card-head">
+                    <span class="card-title">Pengaturan</span>
+                    <button class="btn btn-primary" id="saveBtn">&#128190; Simpan Perubahan</button>
+                </div>
+                <div class="row2">
+                    <div>
+                        <label>Nomor WhatsApp (tanpa + dan 0)</label>
+                        <input id="fWa" placeholder="6283847105847" />
+                    </div>
+                    <div>
+                        <label>Info terakhir disimpan</label>
+                        <input id="fSaved" disabled value="belum ada" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="services"></div>
+
+            <div class="card" style="text-align:center">
+                <button class="btn btn-primary" id="addServiceBtn">+ Tambah Layanan Baru</button>
+            </div>
+
+            <div class="card">
+                <details class="help" open>
+                    <summary>Tata cara pakai (baca sekali)</summary>
+                    <ol>
+                        <li>Ubah harga langsung di kolom yang tersedia, lalu klik <b>Simpan Perubahan</b>.</li>
+                        <li>Kolom <b>Label</b> = teks di tombol (mis. "7 Hari - Rp 18.000"). Kolom <b>Pesan WA</b> = isi chat otomatis.</li>
+                        <li>Tambah/hapus paket, grup, atau layanan lewat tombol di masing-masing blok.</li>
+                        <li>Setelah tersimpan, sisipan <b>"Simpan"</b> otomatis tampil di website dalam 1-2 menit.</li>
+                    </ol>
+                </details>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        var TOKEN = localStorage.getItem("diksadmin");
+        var DATA = null;
+        var API_BASE = window.location.protocol === "file:" ? "http://localhost:3000" : "";
+
+        var loginView = document.getElementById("loginView");
+        var editorView = document.getElementById("editorView");
+        var loginErr = document.getElementById("loginErr");
+
+        function fileModeHint() {
+            if (window.location.protocol !== "file:") return false;
+            loginErr.innerHTML =
+                "Dibuka lewat file:// — pastikan server lokal jalan<br>" +
+                "atau buka lewat <b>http://localhost:3000/admin.html</b>";
+            return true;
+        }
+
+        function toast(msg, type) {
+            var t = document.getElementById("toast");
+            t.textContent = msg;
+            t.className = "show " + (type || "ok");
+            setTimeout(function () { t.className = ""; }, 2600);
+        }
+
+        function esc(s) {
+            return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        }
+
+        function setView(authed) {
+            loginView.style.display = authed ? "none" : "block";
+            editorView.style.display = authed ? "block" : "none";
+            document.getElementById("logoutBtn").style.display = authed ? "inline-block" : "none";
+        }
+
+        function loadRemote() {
+            return fetch(API_BASE + "/api/data", { headers: { "Cache-Control": "no-cache" } }).then(function (r) {
+                if (!r.ok) throw new Error("HTTP " + r.status);
+                return r.json();
+            });
+        }
+
+        function afterLogin() {
+            setView(true);
+            loadRemote()
+                .then(function (d) {
+                    DATA = d;
+                    render();
+                    toast("Data dimuat");
+                })
+                .catch(function () {
+                    if (window.location.protocol !== "file:") toast("Gagal memuat data dari server", "err");
+                });
+        }
+
+        document.getElementById("loginBtn").addEventListener("click", function () {
+            var pw = document.getElementById("passInput").value;
+            if (!pw) return;
+            fetch(API_BASE + "/api/data", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "x-admin-password": pw },
+                body: JSON.stringify({ __check: true }),
+            }).then(function (r) {
+                if (r.status === 401) throw new Error("Password salah");
+                if (r.status !== 200) throw new Error("Server error");
+                TOKEN = pw;
+                localStorage.setItem("diksadmin", pw);
+                document.getElementById("passInput").value = "";
+                afterLogin();
+            }).catch(function (e) {
+                if (!fileModeHint()) loginErr.textContent = e.message || "Gagal masuk";
+            });
+        });
+
+        document.getElementById("passInput").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") document.getElementById("loginBtn").click();
+        });
+
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            TOKEN = null;
+            localStorage.removeItem("diksadmin");
+            setView(false);
+        });
+
+        if (TOKEN) afterLogin(); else setView(false);
+
+        // ---------- Build data ----------
+        function readView() {
+            DATA.wa = document.getElementById("fWa").value.replace(/[^0-9]/g, "");
+            return DATA;
+        }
+
+        // ---------- Rendering ----------
+        function field(value, idPrefix, placeholder) {
+            return '<input id="' + idPrefix + '" value="' + esc(value) + '" placeholder="' + esc(placeholder) + '" />';
+        }
+
+        function pkgHtml(pkg, si, gi, pi) {
+            var pre = "p" + si + "_" + gi + "_" + pi;
+            return '<div class="pkg">' +
+                '<div class="pkg-label">' +
+                '<span class="card-title" style="font-size:.9rem;font-weight:600" id="' + pre + '_head">' + esc(pkg.label || "Paket baru") + '</span>' +
+                '<button class="btn btn-sm btn-danger" data-act="delpkg" data-si="' + si + '" data-gi="' + gi + '" data-pi="' + pi + '">Hapus</button>' +
+                '</div>' +
+                '<label>Label (teks tombol)</label>' +
+                field(pkg.label, pre + "_label", "7 Hari - Rp 18.000") +
+                '<label>Pesan WA (isi chat otomatis)</label>' +
+                field(pkg.pesan, pre + "_pesan", "Halo gan, saya mau beli ...") +
+                '</div>';
+        }
+
+        function groupHtml(g, si, gi) {
+            var pre = "g" + si + "_" + gi;
+            var pkgs = '<div id="' + pre + '_pkgs">' +
+                (g.paket || []).map(function (p, pi) { return pkgHtml(p, si, gi, pi); }).join("") +
+                '</div>';
+            return '<div class="group-box">' +
+                '<div class="group-head">' +
+                '<input style="font-weight:700" id="' + pre + '_judul" value="' + esc(g.judul || "") + '" placeholder="Nama grup (mis. 1P1U)" />' +
+                '<button class="btn btn-sm btn-danger" data-act="delgroup" data-si="' + si + '" data-gi="' + gi + '">Hapus Grup</button>' +
+                '</div>' +
+                pkgs +
+                '<button class="btn btn-sm" data-act="addpkg" data-si="' + si + '" data-gi="' + gi + '">+ Paket</button>' +
+                '</div>';
+        }
+
+        function serviceHtml(s, si) {
+            var pre = "s" + si;
+            var img = s.ikon && s.ikon.type === "img";
+            var iconCls = img ? "" : (s.ikon && s.ikon.class ? s.ikon.class : "bi bi-stars");
+            var srcVal = img ? s.ikon.src : "";
+            var altVal = img ? (s.ikon.alt || "") : "";
+            return '<div class="card">' +
+                '<div class="card-head">' +
+                '<span class="card-title">#' + (si + 1) + ' &nbsp;<input id="' + pre + '_nama" value="' + esc(s.nama) + '" placeholder="Nama layanan" style="display:inline-block;width:auto;font-weight:700" /></span>' +
+                '<button class="btn btn-sm btn-danger" data-act="delservice" data-si="' + si + '">Hapus Layanan</button>' +
+                '</div>' +
+                '<div class="row2">' +
+                '<div><label>ID unik (huruf kecil, tanpa spasi)</label>' + field(s.id, pre + "_id", "netflix") + '</div>' +
+                '<div><label>Warna aksen (kls CSS)</label>' + field("product-" + s.id, pre + "_cls", "product-netflix") + '</div>' +
+                '</div>' +
+                '<label>Tipe ikon</label>' +
+                '<select id="' + pre + '_ikontype">' +
+                '<option value="img"' + (img ? ' selected' : '') + '>Gambar logo (URL)</option>' +
+                '<option value="icon"' + (img ? '' : ' selected') + '>Ikon (Bootstrap Icons)</option>' +
+                '</select>' +
+                '<div class="icon-tab" id="' + pre + '_imgwrap" style="' + (img ? '' : 'display:none') + '">' +
+                '<div><label>URL logo</label>' + field(srcVal, pre + "_imgsrc", "assets/netflix.png") + '</div>' +
+                '<div><label>Teks alt</label>' + field(altVal, pre + "_imgalt", "Netflix Logo") + '</div>' +
+                '</div>' +
+                '<div id="' + pre + '_iconwrap" style="' + (img ? 'display:none' : '') + '">' +
+                '<label>Kelas ikon</label>' + field(iconCls, pre + "_iconclass", "bi bi-stars") +
+                '</div>' +
+                '<div id="' + pre + '_groups">' +
+                (s.grup || []).map(function (g, gi) { return groupHtml(g, si, gi); }).join("") +
+                '</div>' +
+                '<button class="btn btn-sm" data-act="addgroup" data-si="' + si + '">+ Grup Paket</button>' +
+                '</div>';
+        }
+
+        function render() {
+            document.getElementById("fWa").value = DATA.wa || "";
+            document.getElementById("fSaved").value = (DATA._savedAt || "") + (DATA._savedBy ? "" : "");
+            document.getElementById("services").innerHTML =
+                DATA.layanan.map(function (s, si) { return serviceHtml(s, si); }).join("");
+        }
+
+        // ---------- Sync from form into DATA ----------
+        function v(scope, suffix) {
+            var el = scope.querySelector('[id$="_' + suffix + '"]');
+            return el ? el.value : "";
+        }
+
+        function readAll() {
+            var sEls = document.querySelectorAll("#services > div.card");
+            var out = [];
+            sEls.forEach(function (sEl) {
+                var s = { id: "", nama: "", ikon: { type: "img", src: "", alt: "" }, grup: [] };
+                s.nama = v(sEl, "nama");
+                s.id = v(sEl, "id").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
+                var itype = v(sEl, "ikontype");
+                if (itype === "img") {
+                    s.ikon = { type: "img", src: v(sEl, "imgsrc"), alt: v(sEl, "imgalt") };
+                } else {
+                    s.ikon = { type: "icon", class: v(sEl, "iconclass") };
+                }
+                var groups = [];
+                sEl.querySelectorAll(".group-box").forEach(function (gEl) {
+                    var judul = v(gEl, "judul");
+                    var pk = [];
+                    gEl.querySelectorAll(".pkg").forEach(function (pEl) {
+                        pk.push({ label: v(pEl, "label"), pesan: v(pEl, "pesan") });
+                    });
+                    groups.push({ judul: judul, paket: pk });
+                });
+                s.grup = groups;
+                out.push(s);
+            });
+            return out;
+        }
+
+        // ---------- Actions ----------
+        function refresh() {
+            // re-render from current form state
+            DATA.layanan = readAll();
+            DATA.wa = document.getElementById("fWa").value;
+            render();
+        }
+
+        document.getElementById("services").addEventListener("click", function (e) {
+            var btn = e.target.closest("[data-act]");
+            if (!btn) return;
+            var act = btn.getAttribute("data-act");
+            var si = Number(btn.getAttribute("data-si"));
+            var gi = Number(btn.getAttribute("data-gi"));
+            var pi = Number(btn.getAttribute("data-pi"));
+
+            // ensure indexes freshly assigned before structural ops
+            var sCards = document.querySelectorAll("#services > div.card");
+            sCards.forEach(function (c, i) { c.setAttribute("data-idx", i); });
+            sCards.forEach(function (c, i) {
+                var groups = c.querySelectorAll(".group-box");
+                groups.forEach(function (g, j) {
+                    g.setAttribute("data-idx", j);
+                    var pkgs = g.querySelectorAll(".pkg");
+                    pkgs.forEach(function (p, k) { p.setAttribute("data-idx", k); });
+                });
+            });
+
+            if (act === "delpkg") {
+                var g = sCards[si].querySelectorAll(".group-box")[gi];
+                var pkgs = g.querySelectorAll(".pkg");
+                pkgs[pi].remove();
+            } else if (act === "addpkg") {
+                var pkgsWrap = document.getElementById("g" + si + "_" + gi + "_pkgs");
+                var pcount = (pkgsWrap ? pkgsWrap.querySelectorAll(".pkg") : []).length || 0;
+                var pos = document.createElement("div");
+                pos.innerHTML = pkgHtml({ label: "", pesan: "" }, si, gi, pcount);
+                pkgsWrap.appendChild(pos.firstChild);
+            } else if (act === "delgroup") {
+                sCards[si].querySelectorAll(".group-box")[gi].remove();
+            } else if (act === "addgroup") {
+                var sc = sCards[si];
+                var gcount = sc.querySelectorAll(".group-box").length;
+                var ins = document.createElement("div");
+                ins.innerHTML = groupHtml({ judul: "", paket: [] }, si, gcount);
+                var groupsWrap = document.getElementById("s" + si + "_groups");
+                groupsWrap.appendChild(ins.firstChild);
+            } else if (act === "delservice") {
+                sCards[si].remove();
+            }
+            // re-index DOM data-idx then refresh data
+            var scards2 = document.querySelectorAll("#services > div.card");
+            scards2.forEach(function (c, i) { c.setAttribute("data-idx", i); });
+            scards2.forEach(function (c, i) {
+                c.querySelectorAll(".group-box").forEach(function (g, j) {
+                    g.setAttribute("data-idx", j);
+                    g.querySelectorAll(".pkg").forEach(function (p, k) { p.setAttribute("data-idx", k); });
+                });
+            });
+            refresh();
+        });
+
+        document.getElementById("addServiceBtn").addEventListener("click", function () {
+            var count = document.querySelectorAll("#services > div.card").length;
+            var fresh = {
+                id: "layanan",
+                nama: "Layanan Baru",
+                ikon: { type: "img", src: "", alt: "" },
+                grup: [{ judul: "Paket", paket: [{ label: "1 Bulan - Rp 1.000", pesan: "Halo gan, saya mau beli ... 1 Bulan seharga Rp 1.000" }] }],
+            };
+            var wrap = document.createElement("div");
+            wrap.innerHTML = serviceHtml(fresh, count);
+            document.getElementById("services").appendChild(wrap.firstChild);
+            var sCards = document.querySelectorAll("#services > div.card");
+            sCards.forEach(function (c, i) { c.setAttribute("data-idx", i); });
+            refresh();
+        });
+
+        // ikon type toggle
+        document.getElementById("services").addEventListener("change", function (e) {
+            if (e.target && e.target.tagName === "SELECT" && e.target.id && e.target.id.indexOf("_ikontype") > -1) {
+                var pre = e.target.id.replace("_ikontype", "");
+                var img = e.target.value === "img";
+                document.getElementById(pre + "_imgwrap").style.display = img ? "" : "none";
+                document.getElementById(pre + "_iconwrap").style.display = img ? "none" : "";
+            }
+        });
+
+        function waFromField() {
+            var raw = document.getElementById("fWa").value || "";
+            var digits = raw.replace(/[^0-9]/g, "");
+            return digits;
+        }
+
+        function waValid(w) {
+            return /^[0-9]{6,15}$/.test(w);
+        }
+
+        function waDefault() {
+            var prev = DATA && DATA.wa ? String(DATA.wa).replace(/[^0-9]/g, "") : "";
+            if (waValid(prev)) return prev;
+            return "6283847105847";
+        }
+
+        document.getElementById("saveBtn").addEventListener("click", function () {
+            if (!DATA) return;
+            var payload = readAll();
+            var wa = waFromField();
+            if (!wa || !waValid(wa)) {
+                if (!wa) wa = waDefault();
+            }
+            if (!waValid(wa)) {
+                toast("Kolom Nomor WA belum valid — isi angka saja", "err");
+                document.getElementById("fWa").style.borderColor = "#dc2626";
+                return;
+            }
+            document.getElementById("fWa").style.borderColor = "";
+            payload.wa = wa;
+            DATA = payload;
+            payload._savedAt = new Date().toLocaleString("id-ID");
+            fetch(API_BASE + "/api/data", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "x-admin-password": TOKEN },
+                body: JSON.stringify(payload),
+            }).then(function (r) {
+                if (r.status === 401) { toast("Sesi berakhir, silakan masuk lagi", "err"); TOKEN = null; localStorage.removeItem("diksadmin"); setView(false); throw new Error("401"); }
+                if (!r.ok) return r.json().then(function (j) { throw new Error(j.error || "Gagal simpan"); });
+                toast("Tersimpan! Website akan update dalam 1-2 menit");
+                document.getElementById("fSaved").value = payload._savedAt;
+            }).catch(function (e) {
+                toast(e.message || "Gagal menyimpan", "err");
+            });
+        });
+    </script>
+</body>
+
+</html>
