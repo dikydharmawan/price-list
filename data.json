@@ -13,20 +13,20 @@
           "judul": "1P1U",
           "paket": [
             {
-              "label": "1 Hari - Rp 6.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 1 Hari seharga Rp 6.000"
+              "label": "1 Hari - Rp 5.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 1 Hari seharga Rp 5.000"
             },
             {
-              "label": "3 Hari - Rp 9.500",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 3 Hari seharga Rp 9.500"
+              "label": "3 Hari - Rp 8.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 3 Hari seharga Rp 8.000"
             },
             {
-              "label": "7 Hari - Rp 15.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 7 Hari seharga Rp 15.000"
+              "label": "7 Hari - Rp 13.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 7 Hari seharga Rp 13.000"
             },
             {
-              "label": "1 Bulan - Rp 35.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 1 Bulan seharga Rp 35.000"
+              "label": "1 Bulan - Rp 32.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P1U 1 Bulan seharga Rp 32.000"
             }
           ]
         },
@@ -34,20 +34,20 @@
           "judul": "1P2U",
           "paket": [
             {
-              "label": "1 Hari - Rp 5.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 1 Hari seharga Rp 5.000"
+              "label": "1 Hari - Rp 4.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 1 Hari seharga Rp 4.000"
             },
             {
-              "label": "3 Hari - Rp 8.500",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 3 Hari seharga Rp 8.500"
+              "label": "3 Hari - Rp 6.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 3 Hari seharga Rp 6.000"
             },
             {
-              "label": "7 Hari - Rp 15.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 7 Hari seharga Rp 15.000"
+              "label": "7 Hari - Rp 11.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 7 Hari seharga Rp 11.000"
             },
             {
-              "label": "1 Bulan - Rp 25.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 1 Bulan seharga Rp 25.000"
+              "label": "1 Bulan - Rp 22.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket 1P2U 1 Bulan seharga Rp 22.000"
             }
           ]
         },
@@ -55,20 +55,28 @@
           "judul": "Semi Private",
           "paket": [
             {
-              "label": "1 Hari - Rp 12.500",
-              "pesan": "Halo gan, saya mau beli Netflix paket SemiPrivate 1 Hari seharga Rp 12.500"
+              "label": "1 Hari - Rp 10.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 1 Hari seharga Rp 10.000"
             },
             {
-              "label": "3 Hari - Rp 18.500",
-              "pesan": "Halo gan, saya mau beli Netflix paket SemiPrivate 3 Hari seharga Rp 18.500"
+              "label": "3 Hari - Rp 15.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 3 Hari seharga Rp 15.000"
             },
             {
-              "label": "7 Hari - Rp 29.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket SemiPrivate 7 Hari seharga Rp 29.000"
+              "label": "7 Hari - Rp 23.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 7 Hari seharga Rp 23.000"
             },
             {
-              "label": "1 Bulan - Rp 49.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket SemiPrivate 1 Bulan seharga Rp 49.000"
+              "label": "1 Bulan - Rp 45.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 1 Bulan seharga Rp 45.000"
+            },
+            {
+              "label": "1U 2 Bulan - Rp 52.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 1U 2 Bulan seharga Rp 52.000"
+            },
+            {
+              "label": "2U 2 Bulan - Rp 42.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Semi Private 2U 2 Bulan seharga Rp 42.000"
             }
           ]
         },
@@ -76,34 +84,16 @@
           "judul": "Private",
           "paket": [
             {
-              "label": "7 Hari - Rp 65.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket Private 7 Hari seharga Rp 65.000"
+              "label": "7 Hari - Rp 60.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Private 7 Hari seharga Rp 60.000"
             },
             {
-              "label": "1 Bulan - Rp 159.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket Private 1 Bulan seharga Rp 159.000"
-            }
-          ]
-        },
-        {
-          "judul": "Anti Limit",
-          "paket": [
-            {
-              "label": "1 Bulan - Rp 89.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket AntiLimit 1 Bulan seharga Rp 89.000"
-            }
-          ]
-        },
-        {
-          "judul": "Paket Lainnya",
-          "paket": [
-            {
-              "label": "1U - 2 Bulan - Rp 59.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 1U 2 Bulan seharga Rp 59.000"
+              "label": "1 Bulan - Rp 150.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Private 1 Bulan seharga Rp 150.000"
             },
             {
-              "label": "2U - 2 Bulan - Rp 49.000",
-              "pesan": "Halo gan, saya mau beli Netflix paket 2U 2 Bulan seharga Rp 49.000"
+              "label": "Anti Limit - Rp 75.000",
+              "pesan": "Halo gan, saya mau beli Netflix paket Anti Limit seharga Rp 75.000"
             }
           ]
         }
@@ -122,20 +112,20 @@
           "judul": "Indplan",
           "paket": [
             {
-              "label": "1 Bulan - Rp 35.000",
-              "pesan": "Halo gan, saya mau beli Spotify Indplan 1 Bulan seharga Rp 35.000"
+              "label": "1 Bulan - Rp 30.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Indplan 1 Bulan seharga Rp 30.000"
             },
             {
-              "label": "2 Bulan - Rp 49.000",
-              "pesan": "Halo gan, saya mau beli Spotify Indplan 2 Bulan seharga Rp 49.000"
+              "label": "2 Bulan - Rp 45.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Indplan 2 Bulan seharga Rp 45.000"
             },
             {
-              "label": "1 Bulan No Garansi - Rp 18.500",
-              "pesan": "Halo gan, saya mau beli Spotify Indplan 1 Bulan No Garansi seharga Rp 18.500"
+              "label": "1 Bulan No Garansi - Rp 15.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Indplan 1 Bulan No Garansi seharga Rp 15.000"
             },
             {
-              "label": "3 Bulan No Garansi - Rp 29.000",
-              "pesan": "Halo gan, saya mau beli Spotify Indplan 3 Bulan No Garansi seharga Rp 29.000"
+              "label": "3 Bulan No Garansi - Rp 22.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Indplan 3 Bulan No Garansi seharga Rp 22.000"
             }
           ]
         },
@@ -143,20 +133,20 @@
           "judul": "Famplan",
           "paket": [
             {
-              "label": "1 Bulan - Rp 32.500",
-              "pesan": "Halo gan, saya mau beli Spotify Famplan 1 Bulan seharga Rp 32.500"
+              "label": "1 Bulan - Rp 28.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Famplan 1 Bulan seharga Rp 28.000"
             },
             {
-              "label": "2 Bulan - Rp 45.000",
-              "pesan": "Halo gan, saya mau beli Spotify Famplan 2 Bulan seharga Rp 45.000"
+              "label": "2 Bulan - Rp 40.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Famplan 2 Bulan seharga Rp 40.000"
             },
             {
-              "label": "1 Bulan No Garansi - Rp 17.500",
-              "pesan": "Halo gan, saya mau beli Spotify Famplan 1 Bulan No Garansi seharga Rp 17.500"
+              "label": "1 Bulan No Garansi - Rp 14.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Famplan 1 Bulan No Garansi seharga Rp 14.000"
             },
             {
-              "label": "3 Bulan No Garansi - Rp 25.000",
-              "pesan": "Halo gan, saya mau beli Spotify Famplan 3 Bulan No Garansi seharga Rp 25.000"
+              "label": "3 Bulan No Garansi - Rp 19.000",
+              "pesan": "Halo gan, saya mau beli Spotify paket Famplan 3 Bulan No Garansi seharga Rp 19.000"
             }
           ]
         }
@@ -175,20 +165,20 @@
           "judul": "Member",
           "paket": [
             {
-              "label": "1 Minggu - Rp 3.000",
-              "pesan": "Halo gan, saya mau beli Canva Member 1 Minggu seharga Rp 3.000"
+              "label": "1 Minggu - Rp 2.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Member 1 Minggu seharga Rp 2.000"
             },
             {
-              "label": "1 Bulan - Rp 5.000",
-              "pesan": "Halo gan, saya mau beli Canva Member 1 Bulan seharga Rp 5.000"
+              "label": "1 Bulan - Rp 3.500",
+              "pesan": "Halo gan, saya mau beli Canva paket Member 1 Bulan seharga Rp 3.500"
             },
             {
-              "label": "3 Bulan - Rp 8.500",
-              "pesan": "Halo gan, saya mau beli Canva Member 3 Bulan seharga Rp 8.500"
+              "label": "3 Bulan - Rp 5.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Member 3 Bulan seharga Rp 5.000"
             },
             {
-              "label": "1 Tahun - Rp 12.500",
-              "pesan": "Halo gan, saya mau beli Canva Member 1 Tahun seharga Rp 12.500"
+              "label": "1 Tahun - Rp 7.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Member 1 Tahun seharga Rp 7.000"
             }
           ]
         },
@@ -196,20 +186,20 @@
           "judul": "Desain",
           "paket": [
             {
-              "label": "1 Minggu - Rp 4.000",
-              "pesan": "Halo gan, saya mau beli Canva Desain 1 Minggu seharga Rp 4.000"
+              "label": "1 Minggu - Rp 2.500",
+              "pesan": "Halo gan, saya mau beli Canva paket Desain 1 Minggu seharga Rp 2.500"
             },
             {
-              "label": "1 Bulan - Rp 6.000",
-              "pesan": "Halo gan, saya mau beli Canva Desain 1 Bulan seharga Rp 6.000"
+              "label": "1 Bulan - Rp 4.500",
+              "pesan": "Halo gan, saya mau beli Canva paket Desain 1 Bulan seharga Rp 4.500"
             },
             {
-              "label": "3 Bulan - Rp 9.000",
-              "pesan": "Halo gan, saya mau beli Canva Desain 3 Bulan seharga Rp 9.000"
+              "label": "3 Bulan - Rp 6.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Desain 3 Bulan seharga Rp 6.000"
             },
             {
-              "label": "1 Tahun - Rp 19.000",
-              "pesan": "Halo gan, saya mau beli Canva Desain 1 Tahun seharga Rp 19.000"
+              "label": "1 Tahun - Rp 13.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Desain 1 Tahun seharga Rp 13.000"
             }
           ]
         },
@@ -217,16 +207,16 @@
           "judul": "Head / Owner Acc",
           "paket": [
             {
-              "label": "1 Bulan Biasa - Rp 8.500",
-              "pesan": "Halo gan, saya mau beli Canva Head 1 Bulan Biasa seharga Rp 8.500"
+              "label": "1 Bulan Biasa - Rp 6.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Head 1 Bulan Biasa seharga Rp 6.000"
             },
             {
-              "label": "1 Bulan Spesial - Rp 12.500",
-              "pesan": "Halo gan, saya mau beli Canva Head 1 Bulan Spesial seharga Rp 12.500"
+              "label": "1 Bulan Spesial - Rp 8.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Head 1 Bulan Spesial seharga Rp 8.000"
             },
             {
-              "label": "Lifetime (Selamanya) - Rp 15.000",
-              "pesan": "Halo gan, saya mau beli Canva Lifetime seharga Rp 15.000"
+              "label": "Lifetime (Selamanya) - Rp 10.000",
+              "pesan": "Halo gan, saya mau beli Canva paket Lifetime seharga Rp 10.000"
             }
           ]
         }
@@ -242,28 +232,28 @@
       },
       "grup": [
         {
-          "judul": "Sharing",
+          "judul": "Private",
           "paket": [
             {
-              "label": "7 Hari - Rp 12.500",
-              "pesan": "Halo gan, saya mau beli CapCut Sharing 7 Hari seharga Rp 12.500"
+              "label": "7 Hari - Rp 12.000",
+              "pesan": "Halo gan, saya mau beli CapCut paket Private 7 Hari seharga Rp 12.000"
             },
             {
-              "label": "1 Bulan - Rp 29.000",
-              "pesan": "Halo gan, saya mau beli CapCut Sharing 1 Bulan seharga Rp 29.000"
+              "label": "1 Bulan - Rp 35.000",
+              "pesan": "Halo gan, saya mau beli CapCut paket Private 1 Bulan seharga Rp 35.000"
             }
           ]
         },
         {
-          "judul": "Private",
+          "judul": "Sharing",
           "paket": [
             {
-              "label": "7 Hari - Rp 15.000",
-              "pesan": "Halo gan, saya mau beli CapCut Private 7 Hari seharga Rp 15.000"
+              "label": "7 Hari - Rp 10.000",
+              "pesan": "Halo gan, saya mau beli CapCut paket Sharing 7 Hari seharga Rp 10.000"
             },
             {
-              "label": "1 Bulan - Rp 45.000",
-              "pesan": "Halo gan, saya mau beli CapCut Private 1 Bulan seharga Rp 45.000"
+              "label": "1 Bulan - Rp 25.000",
+              "pesan": "Halo gan, saya mau beli CapCut paket Sharing 1 Bulan seharga Rp 25.000"
             }
           ]
         }
@@ -281,16 +271,16 @@
           "judul": "Invite",
           "paket": [
             {
-              "label": "1 Bulan - Rp 29.000",
-              "pesan": "Halo gan, saya mau beli Gemini Invite 1 Bulan seharga Rp 29.000"
+              "label": "1 Bulan - Rp 25.000",
+              "pesan": "Halo gan, saya mau beli Gemini paket Invite 1 Bulan seharga Rp 25.000"
             },
             {
-              "label": "3 Bulan - Rp 45.000",
-              "pesan": "Halo gan, saya mau beli Gemini Invite 3 Bulan seharga Rp 45.000"
+              "label": "3 Bulan - Rp 38.000",
+              "pesan": "Halo gan, saya mau beli Gemini paket Invite 3 Bulan seharga Rp 38.000"
             },
             {
-              "label": "1 Tahun - Rp 75.000",
-              "pesan": "Halo gan, saya mau beli Gemini Invite 1 Tahun seharga Rp 75.000"
+              "label": "1 Tahun - Rp 65.000",
+              "pesan": "Halo gan, saya mau beli Gemini paket Invite 1 Tahun seharga Rp 65.000"
             }
           ]
         },
@@ -298,8 +288,8 @@
           "judul": "Paket Bundling (Flow, 1000 Credit, 5TB, Pro)",
           "paket": [
             {
-              "label": "18 Bulan - Rp 149.000",
-              "pesan": "Halo gan, saya mau beli Gemini Bundling 18 Bulan seharga Rp 149.000"
+              "label": "18 Bulan - Rp 75.000",
+              "pesan": "Halo gan, saya mau beli Gemini paket Bundling 18 Bulan seharga Rp 75.000"
             }
           ]
         }
@@ -315,40 +305,40 @@
       },
       "grup": [
         {
-          "judul": "Sharing",
+          "judul": "Private",
           "paket": [
             {
-              "label": "7 Hari GO - Rp 19.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Sharing 7 Hari GO seharga Rp 19.000"
+              "label": "1 Bulan GO - Rp 95.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Private 1 Bulan GO seharga Rp 95.000"
             },
             {
-              "label": "1 Bulan GO - Rp 39.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Sharing 1 Bulan GO seharga Rp 39.000"
-            },
-            {
-              "label": "3 Bulan GO - Rp 55.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Sharing 3 Bulan GO seharga Rp 55.000"
-            },
-            {
-              "label": "7 Hari Plus - Rp 49.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Sharing 7 Hari Plus seharga Rp 49.000"
-            },
-            {
-              "label": "1 Bulan Plus - Rp 89.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Sharing 1 Bulan Plus seharga Rp 89.000"
+              "label": "1 Bulan Plus - Rp 135.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Private 1 Bulan Plus seharga Rp 135.000"
             }
           ]
         },
         {
-          "judul": "Private",
+          "judul": "Sharing",
           "paket": [
             {
-              "label": "1 Bulan GO - Rp 119.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Private 1 Bulan GO seharga Rp 119.000"
+              "label": "1 Bulan Plus - Rp 75.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Sharing 1 Bulan Plus seharga Rp 75.000"
             },
             {
-              "label": "1 Bulan Plus - Rp 159.000",
-              "pesan": "Halo gan, saya mau beli ChatGPT Private 1 Bulan Plus seharga Rp 159.000"
+              "label": "7 Hari Plus - Rp 42.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Sharing 7 Hari Plus seharga Rp 42.000"
+            },
+            {
+              "label": "1 Bulan GO - Rp 30.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Sharing 1 Bulan GO seharga Rp 30.000"
+            },
+            {
+              "label": "3 Bulan GO - Rp 42.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Sharing 3 Bulan GO seharga Rp 42.000"
+            },
+            {
+              "label": "7 Hari GO - Rp 15.000",
+              "pesan": "Halo gan, saya mau beli ChatGPT paket Sharing 7 Hari GO seharga Rp 15.000"
             }
           ]
         }
@@ -418,11 +408,20 @@
       },
       "grup": [
         {
-          "judul": "Share",
+          "judul": "Sharing 1U",
           "paket": [
             {
-              "label": "1 Bulan Share - Rp 12.500",
-              "pesan": "Halo gan, saya mau beli WeTV Share 1 Bulan seharga Rp 12.500"
+              "label": "1 Bulan - Rp 15.000",
+              "pesan": "Halo gan, saya mau beli WeTV paket Sharing 1U 1 Bulan seharga Rp 15.000"
+            }
+          ]
+        },
+        {
+          "judul": "Sharing 2U",
+          "paket": [
+            {
+              "label": "1 Bulan - Rp 28.000",
+              "pesan": "Halo gan, saya mau beli WeTV paket Sharing 2U 1 Bulan seharga Rp 28.000"
             }
           ]
         },
@@ -430,8 +429,8 @@
           "judul": "Private",
           "paket": [
             {
-              "label": "1 Bulan Private - Rp 39.000",
-              "pesan": "Halo gan, saya mau beli WeTV Private 1 Bulan seharga Rp 39.000"
+              "label": "1 Bulan - Rp 42.000",
+              "pesan": "Halo gan, saya mau beli WeTV paket Private 1 Bulan seharga Rp 42.000"
             }
           ]
         }
@@ -533,5 +532,5 @@
     }
   ],
   "wa": "6283847105847",
-  "_savedAt": "6/9/2026, 02.38.45"
+  "_savedAt": "18/9/2026, 22.50.11"
 }

@@ -275,6 +275,453 @@
             .row2 {
                 grid-template-columns: 1fr;
             }
+            .icon-tab {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-wrap: wrap;
+            }
+            .flyer-modal-head {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* ===== Modal preview pamflet ===== */
+        .flyer-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        .flyer-modal-box {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: min(680px, 96vw);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .flyer-modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .5rem;
+            padding: .85rem 1.1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flyer-modal-body {
+            flex: 1;
+            overflow: auto;
+            padding: 16px;
+            background: #eef3f0;
+            text-align: center;
+        }
+
+        .flyer-modal-body img {
+            max-width: 100%;
+            max-height: 62vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .flyer-loading {
+            color: #64748b;
+            font-weight: 600;
+            padding: 34px;
+        }
+
+        .spinner {
+            width: 34px;
+            height: 34px;
+            border: 4px solid #cbd5e1;
+            border-top-color: var(--green);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+/* ===== Pamflet (dibuat sebagai gambar) ===== */
+        #flyerStage {
+            position: absolute;
+            left: -12000px;
+            top: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        #flyer {
+            width: 1080px;
+            min-height: 1350px;
+            height: auto;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(640px 320px at 0% 24%, rgba(74, 222, 128, 0.08), transparent 60%),
+                radial-gradient(640px 320px at 100% 34%, rgba(22, 163, 74, 0.07), transparent 60%),
+                linear-gradient(180deg, #ffffff 0%, #f4faf6 100%);
+            font-family: 'Outfit', 'Segoe UI', Arial, sans-serif;
+            color: #0f172a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #flyer *,
+        #flyer *::before,
+        #flyer *::after {
+            box-sizing: inherit;
+        }
+
+        /* HEADER */
+        .flyer-header {
+            flex: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 26px 50px;
+            overflow: hidden;
+            background:
+                radial-gradient(520px 300px at 92% -40%, rgba(74, 222, 128, 0.32), transparent 70%),
+                radial-gradient(420px 280px at -10% 120%, rgba(22, 163, 74, 0.42), transparent 70%),
+                linear-gradient(135deg, #04150e 0%, #0a2f1e 48%, #15803d 100%);
+        }
+
+        .flyer-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #22c55e 0%, #4ade80 45%, #15803d 100%);
+        }
+
+        .flyer-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flyer-logo {
+            width: 84px;
+            height: 84px;
+            object-fit: contain;
+            border-radius: 22px;
+            background: #ffffff;
+            padding: 11px;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+        }
+
+        .flyer-brandname {
+            font-size: 42px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: .5px;
+        }
+
+        .flyer-tag {
+            font-size: 13px;
+            color: #c8f4dc;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .flyer-badge-wrap {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .flyer-badge {
+            background: #ffffff;
+            color: #15803d;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 9px 18px;
+            border-radius: 60px;
+            white-space: nowrap;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.30);
+        }
+
+        .flyer-badge-sub {
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 7px 16px;
+            border-radius: 60px;
+            letter-spacing: 1.2px;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        /* TITLE */
+        .flyer-titlebar {
+            flex: none;
+            text-align: center;
+            padding: 22px 0 20px;
+            background: linear-gradient(180deg, #f4faf6 0%, #ffffff 26%);
+        }
+
+        .flyer-title {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #15803d;
+        }
+
+        .flyer-titlesub {
+            display: inline-block;
+            margin-top: 12px;
+            background: #ffffff;
+            border: 1px solid #d3e7dc;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 9px 20px;
+            border-radius: 60px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        /* BODY : grid layanan */
+        .flyer-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            align-content: start;
+            padding: 8px 44px 6px;
+        }
+
+        .flyer-svc {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border: 1px solid #e4eee8;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+        }
+
+        .flyer-svc-band {
+            flex: none;
+            padding: 12px 10px 10px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .flyer-svc-name {
+            font-size: 17px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.20);
+        }
+
+        .flyer-svc-mulai {
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.95;
+        }
+
+        .flyer-svc-body {
+            flex: 1;
+            padding: 8px 11px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .flyer-grp {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .flyer-grp .flyer-pkg {
+            width: 100%;
+        }
+
+        .flyer-grp-title {
+            display: inline-block;
+            font-size: 8.5px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            padding: 3px 8px;
+            margin-bottom: 3px;
+            border-radius: 40px;
+        }
+
+        .flyer-pkg {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 6px;
+            padding: 2.5px 0;
+            border-bottom: 1px dotted #e3ede7;
+            font-size: 9.5px;
+            line-height: 1.25;
+        }
+
+        .flyer-pkg:last-child {
+            border-bottom: none;
+        }
+
+        .flyer-pkg-name {
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .flyer-pkg-price {
+            flex: none;
+            font-size: 9.5px;
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+        .flyer-footer {
+            flex: none;
+            text-align: center;
+            padding: 8px 44px 22px;
+        }
+
+        .flyer-cta {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #0a2f1e 0%, #16a34a 52%, #22c55e 100%);
+            color: #ffffff;
+            padding: 22px 40px;
+            margin-bottom: 16px;
+            box-shadow: 0 14px 34px rgba(22, 163, 74, 0.35);
+        }
+
+        .flyer-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% -60%, rgba(255, 255, 255, 0.16), transparent 55%);
+        }
+
+        .flyer-cta-title {
+            position: relative;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .flyer-cta-wa {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+            background: #ffffff;
+            color: #15803d;
+            font-size: 27px;
+            font-weight: 800;
+            padding: 7px 28px;
+            border-radius: 60px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+        }
+
+        .flyer-pay-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #166534;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .flyer-pay {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .flyer-pay-logo {
+            height: 32px;
+            background: #ffffff;
+            border: 1px solid #dbe9e1;
+            border-radius: 9px;
+            padding: 4px 9px;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
+        }
+
+        .flyer-notes {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .flyer-note {
+            background: #eef8f1;
+            border: 1px solid #c6e3d2;
+            color: #14532d;
+            border-radius: 60px;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 6px 13px;
+        }
+
+        .flyer-note-accent {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            border-color: transparent;
+            color: #ffffff;
+            font-size: 13.5px;
+            padding: 8px 18px;
+            box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+        }
+
+        .flyer-copy {
+            font-size: 12px;
+            color: #7c8794;
+            font-weight: 500;
+            padding-top: 12px;
+            border-top: 1px dashed #dbe6df;
+        }
+
+        .flyer-site {
+            color: #15803d;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -319,6 +766,14 @@
 
             <div id="services"></div>
 
+            <div class="card">
+                <div class="card-head">
+                    <span class="card-title">Pamflet Iklan (PNG/JPG)</span>
+                    <button class="btn btn-primary" id="flyerBtn">&#128444; Buat Pamflet</button>
+                </div>
+                <p class="muted" style="line-height:1.6">Buat poster pamflet dari data di atas (termasuk perubahan yang belum disimpan), lihat preview-nya lalu unduh sebagai gambar PNG (bening) atau JPG (ringan) untuk iklan di WhatsApp / medsos.</p>
+            </div>
+
             <div class="card" style="text-align:center">
                 <button class="btn btn-primary" id="addServiceBtn">+ Tambah Layanan Baru</button>
             </div>
@@ -339,6 +794,29 @@
     </div>
 
     <div id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Modal preview pamflet -->
+    <div id="flyerModal" class="flyer-modal" style="display:none">
+        <div class="flyer-modal-box">
+            <div class="flyer-modal-head">
+                <span class="card-title">Preview Pamflet</span>
+                <div style="display:flex;gap:.45rem;align-items:center">
+                    <button class="btn btn-primary btn-sm" id="flyerPngBtn">&#128228; PNG</button>
+                    <button class="btn btn-sm" id="flyerJpgBtn">&#128248; JPG</button>
+                    <button class="btn btn-sm" id="flyerCloseBtn" title="Tutup">&#10005;</button>
+                </div>
+            </div>
+            <div class="flyer-modal-body">
+                <div class="flyer-loading" id="flyerLoading"><div class="spinner"></div>Membuat pamflet...</div>
+                <img id="flyerPreview" alt="Preview Pamflet" style="display:none" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Tempat render pamflet di luar layar (untuk html2canvas) -->
+    <div id="flyerStage" aria-hidden="true"></div>
 
     <script>
         var TOKEN = localStorage.getItem("diksadmin");
@@ -376,6 +854,17 @@
             document.getElementById("logoutBtn").style.display = authed ? "inline-block" : "none";
         }
 
+        function simpanCache(d) {
+            try { localStorage.setItem("diksdata", JSON.stringify(d)); } catch (e) { /* abaikan */ }
+        }
+
+        function bacaCache() {
+            try {
+                var s = localStorage.getItem("diksdata");
+                return s ? JSON.parse(s) : null;
+            } catch (e) { return null; }
+        }
+
         function loadRemote() {
             return fetch(API_BASE + "/api/data", { headers: { "Cache-Control": "no-cache" } })
                 .then(function (r) {
@@ -383,10 +872,19 @@
                     return r.json();
                 })
                 .catch(function () {
-                    return fetch("data.json", { headers: { "Cache-Control": "no-cache" } }).then(function (r) {
+                    return fetch("data.json?v=" + Date.now(), { headers: { "Cache-Control": "no-cache" } }).then(function (r) {
                         if (!r.ok) throw new Error("HTTP " + r.status);
                         return r.json();
                     });
+                })
+                .then(function (d) {
+                    simpanCache(d);
+                    return d;
+                })
+                .catch(function () {
+                    var c = bacaCache();
+                    if (c) return c;
+                    throw new Error("Semua sumber data gagal dimuat");
                 });
         }
 
@@ -399,7 +897,12 @@
                     toast("Data dimuat");
                 })
                 .catch(function () {
-                    if (window.location.protocol !== "file:") toast("Gagal memuat data dari server", "err");
+                    toast(
+                        window.location.protocol === "file:"
+                            ? "Data gagal dimuat. Jalankan server lokal dulu: node server.mjs, lalu buka http://localhost:3000/admin.html"
+                            : "Gagal memuat data dari server. Muat ulang halaman / pastikan API aktif.",
+                        "err"
+                    );
                 });
         }
 
@@ -689,6 +1192,234 @@
             }).catch(function (e) {
                 toast(e.message || "Gagal menyimpan", "err");
             });
+        });
+
+        // ===== Pamflet =====
+        var flyerCanvas = null;
+        var flyerStage = document.getElementById("flyerStage");
+        var flyerModal = document.getElementById("flyerModal");
+        var flyerPreview = document.getElementById("flyerPreview");
+        var flyerLoading = document.getElementById("flyerLoading");
+
+        var BRAND = {
+            netflix: "#e50914", spotify: "#1db954", canva: "#00c4cc", capcut: "#667eea",
+            gemini: "#4285f4", chatgpt: "#10a37f", disney: "#113ccf", wetv: "#00b8d4",
+            vidio: "#7a00ff", iqiyi: "#00be06"
+        };
+
+        function brandColor(id) {
+            return BRAND[id] || "#16a34a";
+        }
+
+        function shade(hex, f) {
+            var m = String(hex).match(/^#([0-9a-f]{6})$/i);
+            if (!m) return "rgb(6,78,59)";
+            var n = parseInt(m[1], 16);
+            var r = Math.min(255, Math.round(((n >> 16) & 255) * f));
+            var g = Math.min(255, Math.round(((n >> 8) & 255) * f));
+            var b = Math.min(255, Math.round((n & 255) * f));
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        function splitPaket(label) {
+            var s = String(label).replace(/\s+/g, " ").trim();
+            var i = s.lastIndexOf(" - ");
+            if (i > -1 && /Rp/i.test(s.slice(i))) {
+                return { nama: s.slice(0, i).trim(), harga: s.slice(i + 3).trim() };
+            }
+            return { nama: s, harga: "" };
+        }
+
+        function hexToRgba(hex, a) {
+            var m = String(hex).match(/^#([0-9a-f]{6})$/i);
+            if (!m) return "rgba(22,163,74," + a + ")";
+            var n = parseInt(m[1], 16);
+            return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+        }
+
+        function hargaMin(s) {
+            var min = null;
+            (s.grup || []).forEach(function (g) {
+                (g.paket || []).forEach(function (p) {
+                    var m = String(p.label).match(/Rp\s*([\d.,]+)/);
+                    if (m) {
+                        var v = parseFloat(String(m[1]).replace(/\./g, "").replace(/,/g, "."));
+                        if (!isNaN(v) && (min === null || v < min)) min = v;
+                    }
+                });
+            });
+            return min === null ? "" : "Mulai Rp " + min.toLocaleString("id-ID");
+        }
+
+        function muatGambarPamflet(container) {
+            var imgs = container.querySelectorAll("img");
+            if (imgs.length === 0) return Promise.resolve();
+            return Promise.all(Array.prototype.map.call(imgs, function (img) {
+                return new Promise(function (ok) {
+                    if (img.complete && img.naturalWidth > 0) return ok();
+                    img.onload = ok;
+                    img.onerror = ok;
+                    setTimeout(ok, 5000);
+                });
+            }));
+        }
+
+        function generateFlyerHTML() {
+            var data = { layanan: readAll(), wa: waFromField() || waDefault() };
+            var wa = String(data.wa).replace(/[^0-9]/g, "");
+            var waTampil = "0" + (wa.indexOf("62") === 0 ? wa.slice(2) : wa);
+
+            var pay = [
+                { file: "dana.png" }, { file: "gopay.png" }, { file: "seabank.png" },
+                { file: "shopeepay.png" }, { file: "jago.png" }, { file: "qris.png" }
+            ].map(function (m) {
+                return '<img class="flyer-pay-logo" src="assets/payment/' + m.file + '" alt="" />';
+            }).join("");
+
+            var svc = (data.layanan || []).map(function (s) {
+                var c = brandColor(s.id);
+                var mulai = hargaMin(s);
+                var band = '<div class="flyer-svc-band" style="background:linear-gradient(120deg,' + shade(c, 0.5) + ', ' + c + ' 72%)">' +
+                    '<div class="flyer-svc-name">' + esc(s.nama) + '</div>' +
+                    (mulai ? '<div class="flyer-svc-mulai">' + esc(mulai) + '</div>' : '') +
+                    '</div>';
+                var grp = (s.grup || []).map(function (g) {
+                    var rows = (g.paket || []).map(function (p) {
+                        var sp = splitPaket(p.label);
+                        return '<div class="flyer-pkg">' +
+                            '<div class="flyer-pkg-name">' + esc(sp.nama) + '</div>' +
+                            (sp.harga ? '<div class="flyer-pkg-price" style="color:' + c + '">' + esc(sp.harga) + '</div>' : '') +
+                            '</div>';
+                    }).join("");
+                    return '<div class="flyer-grp">' +
+                        '<span class="flyer-grp-title" style="color:' + c + ';background:' + hexToRgba(c, 0.12) + '">' + esc(g.judul) + '</span>' +
+                        rows + '</div>';
+                }).join("");
+                return '<div class="flyer-svc">' + band +
+                    '<div class="flyer-svc-body">' + grp + '</div></div>';
+            }).join("");
+
+            var jml = (data.layanan || []).length;
+
+            return '<div id="flyer">' +
+                '<div class="flyer-header">' +
+                '<div class="flyer-brand">' +
+                '<img class="flyer-logo" src="assets/logo-diksstore.png" alt="DiksStore" />' +
+                '<div>' +
+                '<div class="flyer-brandname">DiksStore</div>' +
+                '<div class="flyer-tag">Premium Digital Services</div>' +
+                '</div></div>' +
+                '<div class="flyer-badge-wrap">' +
+                '<span class="flyer-badge">&#10003; FULL GARANSI</span>' +
+                '<span class="flyer-badge-sub">TERPERCAYA &bull; PROSES CEPAT</span>' +
+                '</div>' +
+                '</div>' +
+                '<div class="flyer-titlebar">' +
+                '<div class="flyer-title">Price List</div>' +
+                '<div class="flyer-titlesub">' + jml + ' Layanan Premium &bull; Harga Terbaru &bull; Garansi 100%</div>' +
+                '</div>' +
+                '<div class="flyer-body">' + svc + '</div>' +
+                '<div class="flyer-footer">' +
+                '<div class="flyer-cta">' +
+                '<div class="flyer-cta-title">Mau Order? Chat via WhatsApp</div>' +
+                '<div class="flyer-cta-wa">' + waTampil + '</div>' +
+                '</div>' +
+                '<div class="flyer-pay-title">Metode Pembayaran</div>' +
+                '<div class="flyer-pay">' + pay + '</div>' +
+                '<div class="flyer-notes">' +
+                '<span class="flyer-note flyer-note-accent">&#10003; Masih banyak aplikasi premium lain &bull; tanya via WA</span>' +
+                '<span class="flyer-note">&#10003; Proses Cepat</span>' +
+                '<span class="flyer-note">&#10003; Sharing &amp; Private</span>' +
+                '<span class="flyer-note">&#10003; Full Garansi</span>' +
+                '</div>' +
+                '<div class="flyer-copy">diksstore.github.io/price-list &bull; Harga dapat berubah sewaktu-waktu</div>' +
+                '</div></div>';
+        }
+
+        function unduhFlyer(fmt) {
+            if (!flyerCanvas) { toast("Buat pamflet dulu!", "err"); return; }
+            var url = fmt === "jpg" ? flyerCanvas.toDataURL("image/jpeg", 0.92) : flyerCanvas.toDataURL("image/png");
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "DiksStore-Pamflet-" + new Date().toISOString().slice(0, 10) + "." + fmt;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+
+        function showFlyerModal() {
+            flyerModal.style.display = "flex";
+        }
+
+        document.getElementById("flyerBtn").addEventListener("click", function () {
+            if (typeof html2canvas === "undefined") { toast("html2canvas belum dimuat. Muat ulang halaman.", "err"); return; }
+            var jmlLayanan = document.querySelectorAll("#services > div.card").length;
+            if (jmlLayanan === 0) {
+                toast("Belum ada data layanan. Muat ulang admin / pastikan server data aktif (buka via http://localhost:3000).", "err");
+                return;
+            }
+            showFlyerModal();
+            flyerPreview.style.display = "none";
+            flyerLoading.style.display = "block";
+            flyerLoading.innerHTML = '<div class="spinner"></div>Membuat pamflet...';
+
+            flyerStage.innerHTML = generateFlyerHTML();
+            var node = flyerStage.querySelector("#flyer");
+
+            muatGambarPamflet(flyerStage).then(function () {
+                var skala = 2;
+                if (node.scrollHeight > 3400) skala = 1.8;
+                if (node.scrollHeight > 4200) skala = 1.5;
+                return html2canvas(node, {
+                    scale: skala,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: "#ffffff",
+                    windowWidth: node.scrollWidth,
+                    windowHeight: node.scrollHeight
+                }).catch(function () {
+                    return html2canvas(node, {
+                        scale: 1,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: "#ffffff",
+                        windowWidth: node.scrollWidth,
+                        windowHeight: node.scrollHeight
+                    });
+                });
+            }).then(function (canvas) {
+                flyerCanvas = canvas;
+                flyerPreview.onload = function () {
+                    flyerLoading.style.display = "none";
+                    flyerPreview.style.display = "block";
+                };
+                flyerPreview.src = canvas.toDataURL("image/png");
+            }).catch(function (e) {
+                console.error(e);
+                flyerLoading.innerHTML = "Gagal membuat pamflet. Coba lagi / pastikan data layanan sudah termuat.";
+            });
+        });
+
+        document.getElementById("flyerCloseBtn").addEventListener("click", function () {
+            flyerModal.style.display = "none";
+            flyerStage.innerHTML = "";
+            flyerCanvas = null;
+        });
+
+        flyerModal.addEventListener("click", function (e) {
+            if (e.target === flyerModal) {
+                flyerModal.style.display = "none";
+                flyerStage.innerHTML = "";
+                flyerCanvas = null;
+            }
+        });
+
+        document.getElementById("flyerPngBtn").addEventListener("click", function () {
+            unduhFlyer("png");
+        });
+
+        document.getElementById("flyerJpgBtn").addEventListener("click", function () {
+            unduhFlyer("jpg");
         });
     </script>
 </body>
